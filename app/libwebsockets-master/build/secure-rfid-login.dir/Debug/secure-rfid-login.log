@@ -1,0 +1,61 @@
+﻿Compilazione avviata 14/05/2014 20:57:41.
+     1>Progetto "C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\build\secure-rfid-login.vcxproj" sul nodo 2 (destinazioni: build).
+     1>InitializeBuildStatus:
+         Creazione di "secure-rfid-login.dir\Debug\secure-rfid-login.unsuccessfulbuild". È stato specificato "AlwaysCreate".
+       CustomBuild:
+         Tutti gli output sono aggiornati.
+       ClCompile:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I"C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\build" /I"C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\lib" /I"C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\win32port\win32helpers" /I"C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\win32port\zlib" /I"C:\OpenSSL-Win32\include" /Zi /nologo /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D "INSTALL_DATADIR=\"C:/Program Files (x86)/libwebsockets/share\"" /D CMAKE_BUILD /D _CRT_SECURE_NO_DEPRECATE /D _CRT_NONSTDC_NO_DEPRECATE /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"secure-rfid-login.dir\Debug\\" /Fd"secure-rfid-login.dir\Debug\vc100.pdb" /Gd /TC /analyze- /errorReport:prompt "..\srl\secure-rfid-login.c"
+         secure-rfid-login.c
+     1>..\srl\secure-rfid-login.c(155): warning C4013: 'open' non definita. Verrà considerata come esterna che restituisce un int.
+     1>..\srl\secure-rfid-login.c(189): warning C4013: 'close' non definita. Verrà considerata come esterna che restituisce un int.
+     1>..\srl\secure-rfid-login.c(229): warning C4013: 'read' non definita. Verrà considerata come esterna che restituisce un int.
+     1>..\srl\secure-rfid-login.c(246): warning C4013: 'lseek' non definita. Verrà considerata come esterna che restituisce un int.
+     1>..\srl\secure-rfid-login.c(587): warning C4018: '<': errata corrispondenza tra signed e unsigned
+     1>..\srl\secure-rfid-login.c(591): warning C4018: '<': errata corrispondenza tra signed e unsigned
+       ManifestResourceCompile:
+         Tutti gli output sono aggiornati.
+       Link:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\build\bin\Debug\libwebsockets-secure-rfid-login.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib lib\Debug\websockets_static.lib lib\Debug\ZLIB.lib "C:\OpenSSL-Win32\lib\VC\ssleay32MDd.lib" "C:\OpenSSL-Win32\lib\VC\libeay32MDd.lib" ws2_32.lib /MANIFEST /ManifestFile:"secure-rfid-login.dir\Debug\libwebsockets-secure-rfid-login.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:/Users/Andrea/Desktop/myProj/secure-rfid-login/app/libwebsockets-master/build/bin/Debug/libwebsockets-secure-rfid-login.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/Andrea/Desktop/myProj/secure-rfid-login/app/libwebsockets-master/build/lib/Debug/libwebsockets-secure-rfid-login.lib" /MACHINE:X86 "secure-rfid-login.dir\Debug\libwebsockets-secure-rfid-login.exe.embed.manifest.res"
+         "secure-rfid-login.dir\Debug\ArduinoRFID.obj"
+         "secure-rfid-login.dir\Debug\ArgoRFID_Reader.obj"
+         "secure-rfid-login.dir\Debug\rs232.obj"
+         "secure-rfid-login.dir\Debug\secure-rfid-login.obj"
+         "secure-rfid-login.dir\Debug\tray.obj"
+         "secure-rfid-login.dir\Debug\getopt.obj"
+         "secure-rfid-login.dir\Debug\getopt_long.obj"
+         "secure-rfid-login.dir\Debug\gettimeofday.obj"  /machine:X86 /debug 
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"secure-rfid-login.dir\Debug\libwebsockets-secure-rfid-login.exe.embed.manifest" /manifest "secure-rfid-login.dir\Debug\libwebsockets-secure-rfid-login.exe.intermediate.manifest"
+         Tutti gli output sono aggiornati.
+       LinkEmbedManifest:
+         Tutti gli output sono aggiornati.
+         secure-rfid-login.vcxproj -> C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\build\bin\Debug\libwebsockets-secure-rfid-login.exe
+       PostBuildEvent:
+         setlocal
+         C:\Users\Andrea\Desktop\cmake-2.8.12.2-win32-x86\bin\cmake.exe -E copy C:/OpenSSL-Win32/bin/libeay32.dll C:/Users/Andrea/Desktop/myProj/secure-rfid-login/app/libwebsockets-master/build/bin/Debug
+         if %errorlevel% neq 0 goto :cmEnd
+         :cmEnd
+         endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+         :cmErrorLevel
+         exit /b %1
+         :cmDone
+         if %errorlevel% neq 0 goto :VCEnd
+         setlocal
+         C:\Users\Andrea\Desktop\cmake-2.8.12.2-win32-x86\bin\cmake.exe -E copy C:/OpenSSL-Win32/bin/ssleay32.dll C:/Users/Andrea/Desktop/myProj/secure-rfid-login/app/libwebsockets-master/build/bin/Debug
+         if %errorlevel% neq 0 goto :cmEnd
+         :cmEnd
+         endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+         :cmErrorLevel
+         exit /b %1
+         :cmDone
+         if %errorlevel% neq 0 goto :VCEnd
+         :VCEnd
+       FinalizeBuildStatus:
+         Eliminazione del file "secure-rfid-login.dir\Debug\secure-rfid-login.unsuccessfulbuild" in corso.
+         Aggiornamento timestamp di "secure-rfid-login.dir\Debug\secure-rfid-login.lastbuildstate".
+     1>Compilazione progetto "C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\build\secure-rfid-login.vcxproj" (destinazioni: build) completata.
+
+Compilazione completata.
+
+Tempo trascorso 00:00:11.67

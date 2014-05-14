@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\lib\base64-decode.c">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\handshake.c">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\libwebsockets.c">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\output.c">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\parsers.c">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\sha-1.c">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\server.c">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\server-handshake.c">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\extension.c">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\extension-deflate-frame.c">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\extension-deflate-stream.c">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\win32port\win32helpers\websock-w32.c">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\win32port\win32helpers\gettimeofday.c">
+      <Filter>Sources</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\lib\private-libwebsockets.h">
+      <Filter>Headers Private</Filter>
+    </ClInclude>
+    <ClInclude Include="lws_config.h">
+      <Filter>Headers Private</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\extension-deflate-frame.h">
+      <Filter>Headers Private</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\extension-deflate-stream.h">
+      <Filter>Headers Private</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\libwebsockets.h">
+      <Filter>Headers Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\win32port\win32helpers\websock-w32.h">
+      <Filter>Headers Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\win32port\win32helpers\gettimeofday.h">
+      <Filter>Headers Public</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Headers Private">
+      <UniqueIdentifier>{BF9B2D0D-CC17-47D6-AB86-B4D1BE554185}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers Public">
+      <UniqueIdentifier>{9031614A-C764-4A9C-8ED3-1E2F02B2A113}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources">
+      <UniqueIdentifier>{94E9F162-44B9-4F00-9E26-BB9896D7F208}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

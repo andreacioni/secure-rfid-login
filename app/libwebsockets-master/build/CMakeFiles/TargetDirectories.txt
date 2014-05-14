@@ -1,0 +1,7 @@
+C:/Users/Andrea/Desktop/myProj/secure-rfid-login/app/libwebsockets-master/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/Andrea/Desktop/myProj/secure-rfid-login/app/libwebsockets-master/build/CMakeFiles/ZERO_CHECK.dir
+C:/Users/Andrea/Desktop/myProj/secure-rfid-login/app/libwebsockets-master/build/CMakeFiles/ZLIB.dir
+C:/Users/Andrea/Desktop/myProj/secure-rfid-login/app/libwebsockets-master/build/CMakeFiles/dist.dir
+C:/Users/Andrea/Desktop/myProj/secure-rfid-login/app/libwebsockets-master/build/CMakeFiles/secure-rfid-login.dir
+C:/Users/Andrea/Desktop/myProj/secure-rfid-login/app/libwebsockets-master/build/CMakeFiles/websockets.dir
+C:/Users/Andrea/Desktop/myProj/secure-rfid-login/app/libwebsockets-master/build/CMakeFiles/websockets_shared.dir
