@@ -67,23 +67,16 @@ int force_exit = 0;
 
 NOTIFYICONDATA *nData = NULL;
 
-HANDLE wait_for_accept_handle;
-bool release_psw = false;
-
-DWORD WINAPI wait_for_accept_thread( LPVOID lpParam )
+bool send_notification()
 {
-	
-}
+  int result;
+  
+  result = MessageBox( NULL, (LPCWSTR)"Do you want to release your credentials to ?", (LPCWSTR)L"Credential releasing", MB_ICONWARNING | MB_YESNOCANCEL | MB_DEFBUTTON2 | MB_APPLMODAL );
+  
+  if(result == IDYES)
+    return true;
 
-void send_notification()
-{
-	nData->uFlags = NIF_ICON | NIF_MESSAGE | NIF_TIP | NIF_INFO | NIF_STATE;
-	strcpy(nData->szInfo, "Click here to allow releasing password to the login page, if you don't click the request will be automatically rejected...");
-	strcpy(nData->szInfoTitle, "Password request incoming...");
-	nData->dwInfoFlags = NIIF_INFO;
-
-	Shell_NotifyIcon(NIM_MODIFY,nData);
-
+  return false;
 }
 
 enum demo_protocols {
@@ -497,19 +490,15 @@ callback_dumb_increment(struct libwebsocket_context *context,
 
 			//TODO Lancia il popup di windows per richiedere la conferma di rilascio password
 
-			send_notification();
-			wait_for_accept_handle = CreateThread(NULL,0,wait_for_accept_thread,NULL,0,NULL);
-			
-			libwebsocket_write(wsi, &username[LWS_SEND_BUFFER_PRE_PADDING], strlen((char *)username), LWS_WRITE_TEXT);
-			libwebsocket_write(wsi, &password[LWS_SEND_BUFFER_PRE_PADDING], strlen((char *)password), LWS_WRITE_TEXT);
-
-
-
-			printf("Wrote : %i",strlen((char *)username));
-			printf("Wrote : %i",strlen((char *)password));
+			if(send_notification())
+      {
+        //Invio credenziali...
+        libwebsocket_write(wsi, &username[LWS_SEND_BUFFER_PRE_PADDING], strlen((char *)username), LWS_WRITE_TEXT);
+			   libwebsocket_write(wsi, &password[LWS_SEND_BUFFER_PRE_PADDING], strlen((char *)password), LWS_WRITE_TEXT);
+      }
 		}
 		else
-			printf("NO!");
+			printf("NO! Invalid request!");
 		
 		break;
 
