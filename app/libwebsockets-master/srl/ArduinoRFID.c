@@ -3,10 +3,14 @@
 #include "ArduinoRFID.h"
 #include "rs232.h"
 
-const char *hey_message = HEY_MESSAGE;
-char response_buffer[RESPONSE_BUFFER_LENGHT];
+const char *hey_message = HEY_MESSAGE;				//Message sent to the Arduino board to do keep-alive
+char response_buffer[RESPONSE_BUFFER_LENGHT];	//It's a buffer containing the byte expected from keep-alive
 
+//Used by receive_keep_alive
 int compare_keep_alive();
+
+//Check message and return KA/SS_RECEIVED
+int check_message(unsigned char *buffer,int lenght,unsigned char ack_byte);
 
 int wait_for_device()
 {
@@ -15,13 +19,13 @@ int wait_for_device()
 	char OK[4];
 	char uid[4];
 
-	char buffer[278 + 1];
+	//char buffer[278 + 1];
 
 	printf("Searching device...");
 
 	while(port_number < 16)
 	{
-		if(RS232_OpenComport(port_number,115200))
+		if(RS232_OpenComport(port_number,BAUD_RATE))
 		{
 			//printf("non posso aprire la porta COM%i\n",port_number+1);
 		}
@@ -29,7 +33,7 @@ int wait_for_device()
 		{
 			//printf("porta aperta: COM%i\n",port_number+1);
 
-			Sleep(4000); //Allows arduino to setup itself
+			Sleep(SETUP_WAIT); //Allows arduino to setup itself
 			
 			if(RS232_SendBuf(port_number,(unsigned char *) INIT,5)==1)
 			{
@@ -181,7 +185,7 @@ void write_block(int port,unsigned char * block, size_t len,unsigned char block_
 
 }
 
-int wait_message(int port,int timeout, unsigned char *buff)
+int wait_message(int port,int timeout, unsigned char *buff, int buff_lenght)
 {
 	int result = 0;
 	int something_arrived = 0;
@@ -189,13 +193,16 @@ int wait_message(int port,int timeout, unsigned char *buff)
 	int num_of_blocks = 0;
 	int len = 0,received = 0;
 	//unsigned char buff[(MAX_MESSAGE_LENGHT*4)+4]; //(64*4) + 4 ACK byte --- Wait the entire message, after we MUST check the ACK byte
-	time_t start_time = time(NULL);
+	time_t end_time	= time(NULL) + timeout;
+	
+	if(buff_lenght != ((MAX_MESSAGE_LENGHT*4)+4))
+		return result;
 
 	printf("start timer...\n");
 
-	while((time(NULL) < start_time + timeout) && (received < ((MAX_MESSAGE_LENGHT*4)+4))) //It stops when timer timeout accurred or when received is at the max size that the buffer could contain
+	while((time(NULL) < end_time) && (received < buff_lenght)) //It stops when timer timeout accurred or when received is at the max size that the buffer could contain
 	{
-		if((len = RS232_PollComport(port,&buff[received],(((MAX_MESSAGE_LENGHT*4)+4) - received))) > 0) //The lenght of the buff decrease everytime arrive something; when new bytes arrive they are placed where the last one was placed
+		if((len = RS232_PollComport(port,&buff[received],(buff_lenght - received))) > 0) //The lenght of the buff decrease everytime arrive something; when new bytes arrive they are placed where the last one was placed
 		{
 			received += len;
 			something_arrived = 1;

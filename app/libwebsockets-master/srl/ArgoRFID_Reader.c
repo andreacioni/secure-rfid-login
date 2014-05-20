@@ -2,11 +2,14 @@
 #include<windows.h>
 #include "ArduinoRFID.h"
 
-#define TIMEOUT 10000
+#define TIMEOUT 10 //Number of seconds to wait a message after SS flag was captured
+
 char buff[(MAX_MESSAGE_LENGHT*4)+4];
 char name[MAX_MESSAGE_LENGHT] = {0},surname[MAX_MESSAGE_LENGHT] = {0},username[MAX_MESSAGE_LENGHT] = {0},password[MAX_MESSAGE_LENGHT] = {0};
-void sendInfoNotification();
 NOTIFYICONDATA *nData;
+BOOL is_data_present = FALSE;
+
+void sendInfoNotification();
 
 int start_rfid_reader(NOTIFYICONDATA *notify)
 {
@@ -20,21 +23,23 @@ int start_rfid_reader(NOTIFYICONDATA *notify)
 		if(receive_keep_alive(port) == SS_RECEIVED)
 		{
 			//One message is arriving...poll to the COM port for max. 10s
-			if(wait_message(port,TIMEOUT,(unsigned char *) buff) == 1) //			!!!!!Non funziona il timeout!!!!!	
+			if(wait_message(port,TIMEOUT,(unsigned char *) buff) == 1) 			//			!!!!!Non funziona il timeout!!!!!	
 			{
 				printf("message received!\n");
 
 				//Clean the buffer to prevent error
+				is_data_present = FALSE;
 				memset(name,0,MAX_MESSAGE_LENGHT);
 				memset(surname,0,MAX_MESSAGE_LENGHT);
 				memset(username,0,MAX_MESSAGE_LENGHT);
 				memset(password,0,MAX_MESSAGE_LENGHT);
 
 				//Set the data into the correct array
-				memcpy(name,&buff[MAX_MESSAGE_LENGHT*0],64);
-				memcpy(surname,&buff[MAX_MESSAGE_LENGHT*1],64);
-				memcpy(username,&buff[MAX_MESSAGE_LENGHT*2],64);
-				memcpy(password,&buff[MAX_MESSAGE_LENGHT*3],64);
+				memcpy(name,&buff[MAX_MESSAGE_LENGHT*0],MAX_MESSAGE_LENGHT);
+				memcpy(surname,&buff[MAX_MESSAGE_LENGHT*1],MAX_MESSAGE_LENGHT);
+				memcpy(username,&buff[MAX_MESSAGE_LENGHT*2],MAX_MESSAGE_LENGHT);
+				memcpy(password,&buff[MAX_MESSAGE_LENGHT*3],MAX_MESSAGE_LENGHT);
+				is_data_present = TRUE;
 
 				//Send notification
 				sendInfoNotification();
@@ -57,24 +62,100 @@ void sendInfoNotification()
 
 }
 
-char* get_name()
+int get_name(char* buff)
 {
-	return name;
+	int num = -1;
+	if(is_data_present == TRUE)
+	{
+		num = strlen(name);
+		
+		if(num > MAX_MESSAGE_LENGHT)
+		{
+			buff = NULL;
+			num = -1;
+		}
+		else
+			strcpy_s(buff,MAX_MESSAGE_LENGHT,name);
+
+		return num;		
+	}
+
+	//if there aren't data to send
+	buff = NULL;
+
+	return -1;
 }
 
-char* get_surname()
+int get_surname(char* buff)
 {
-	return surname;
+	int num = -1;
+	if(is_data_present == TRUE)
+	{
+		num = strlen(surname);
+		
+		if(num > MAX_MESSAGE_LENGHT)
+		{
+			buff = NULL;
+			num = -1;
+		}
+		else
+			strcpy_s(buff,MAX_MESSAGE_LENGHT,surname);
+
+		return num;		
+	}
+
+	//if there aren't data to send
+	buff = NULL;
+
+	return -1;
 }
 
-char* get_username()
+int get_username(char* buff)
 {
-	return username;
+	int num = -1;
+	if(is_data_present == TRUE)
+	{
+		num = strlen(username);
+		
+		if(num > MAX_MESSAGE_LENGHT)
+		{
+			buff = NULL;
+			num = -1;
+		}
+		else
+			strcpy_s(buff,MAX_MESSAGE_LENGHT,username);
+
+		return num;		
+	}
+
+	//if there aren't data to send
+	buff = NULL;
+
+	return -1;
 }
 
-char* get_password()
+int get_password(char* buff)
 {
-	return password;
+	int num = -1;
+	if(is_data_present == TRUE)
+	{
+		num = strlen(password);
+		
+		if(num > MAX_MESSAGE_LENGHT)
+		{
+			buff = NULL;
+			num = -1;
+		}
+		else
+			strcpy_s(buff,MAX_MESSAGE_LENGHT,password);
+
+		return num;		
+	}
+
+	//if there aren't data to send
+	buff = NULL;
+
+	return -1;
 }
 
 

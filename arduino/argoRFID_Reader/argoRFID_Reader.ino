@@ -4,7 +4,7 @@
 
 #define BAUD_RATE 115200
 #define LED 6
-#define SPEAKER_PIN 3
+#define SPEAKER_PIN 8
 #define TONE_1 440
 #define TONE_2 294
 #define BEEP_ERROR 1

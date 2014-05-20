@@ -125,8 +125,8 @@ int main(HINSTANCE hInstance, HINSTANCE hPrevInstance,
         return 0;
     }
 
-    //ShowWindow(hwnd, nCmdShow);
-    UpdateWindow(hwnd);
+   //ShowWindow(hwnd, nCmdShow);
+   UpdateWindow(hwnd);
 	startTray(hwnd);
 	
 	sever_Thread = CreateThread(NULL,0,server_thread,NULL,0,NULL);

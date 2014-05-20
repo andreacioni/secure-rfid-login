@@ -83,19 +83,24 @@ BOOL send_notification()
 
 BOOL get_credential(unsigned char *username, unsigned char *password)
 {
-	char* rfid_username;
-	char* rfid_password;
-	size_t user_len;
-	size_t pass_len;
+	char rfid_username[MAX_CONTENT_LENGHT];
+	char rfid_password[MAX_CONTENT_LENGHT];
+	int user_len;
+	int pass_len;
+	int res;
 
-	rfid_username = get_username();
-	rfid_password = get_password();
+	if((user_len = get_username(rfid_username)) == -1)
+		return FALSE;
+	if((pass_len = get_password(rfid_password)) == -1)
+		return FALSE;
 
 	user_len = strlen(rfid_username);
 	pass_len = strlen(rfid_password);
 
 	strcpy_s(rfid_username,user_len,username[MAX_CONTENT_LENGHT]);
 	strcpy_s(rfid_password,user_len,password[MAX_CONTENT_LENGHT]);
+
+	return FALSE;
 
 }
 
@@ -511,7 +516,11 @@ callback_dumb_increment(struct libwebsocket_context *context,
 
 			//TODO Lancia il popup di windows per richiedere la conferma di rilascio password
 
-			get_credential(username,password);
+			if(get_credential(username,password) == FALSE)
+			{
+				printf("Data not ready!\n");
+				break;
+			}
 			
 			if(send_notification() == TRUE)
 			{
@@ -521,7 +530,7 @@ callback_dumb_increment(struct libwebsocket_context *context,
 			}
 		}
 		else
-			printf("NO! Invalid request!");
+			printf("NO! Invalid request!\n");
 		
 		break;
 

@@ -10,12 +10,6 @@
     <ClCompile Include="..\win32port\win32helpers\gettimeofday.c">
       <Filter>Sources</Filter>
     </ClCompile>
-    <ClCompile Include="..\srl\rs232.c">
-      <Filter>Sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\srl\secure-rfid-login.c">
-      <Filter>Sources</Filter>
-    </ClCompile>
     <ClCompile Include="..\srl\tray.c">
       <Filter>Sources</Filter>
     </ClCompile>
@@ -23,6 +17,12 @@
       <Filter>Sources</Filter>
     </ClCompile>
     <ClCompile Include="..\srl\ArgoRFID_Reader.c">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\srl\rs232.c">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\srl\secure-rfid-login.c">
       <Filter>Sources</Filter>
     </ClCompile>
   </ItemGroup>
@@ -45,16 +45,16 @@
     <ClInclude Include="..\win32port\win32helpers\websock-w32.h">
       <Filter>Headers Public</Filter>
     </ClInclude>
-    <ClInclude Include="..\srl\ArduinoRFID.h">
-      <Filter>Headers Private</Filter>
-    </ClInclude>
-    <ClInclude Include="..\srl\ArgoRFID_Reader.h">
-      <Filter>Headers Private</Filter>
-    </ClInclude>
     <ClInclude Include="..\srl\rs232.h">
       <Filter>Headers Private</Filter>
     </ClInclude>
     <ClInclude Include="..\srl\secure-rfid-login.h">
+      <Filter>Headers Private</Filter>
+    </ClInclude>
+    <ClInclude Include="..\srl\ArduinoRFID.h">
+      <Filter>Headers Private</Filter>
+    </ClInclude>
+    <ClInclude Include="..\srl\ArgoRFID_Reader.h">
       <Filter>Headers Private</Filter>
     </ClInclude>
   </ItemGroup>
