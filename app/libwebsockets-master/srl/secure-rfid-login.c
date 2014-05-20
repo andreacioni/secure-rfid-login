@@ -87,17 +87,16 @@ BOOL get_credential(unsigned char *username, unsigned char *password)
 	char rfid_password[MAX_CONTENT_LENGHT] = {0};
 	int user_len;
 	int pass_len;
-	int res;
 
 	if((user_len = get_username(rfid_username)) == -1)
 		return FALSE;
 	if((pass_len = get_password(rfid_password)) == -1)
 		return FALSE;
 
-	strcpy_s(username,user_len,rfid_username);
-	strcpy_s(password,pass_len,rfid_password);
+	memcpy(username,rfid_username,user_len);
+	memcpy(password,rfid_password,pass_len);
 
-	return FALSE;
+	return TRUE;
 
 }
 
@@ -491,11 +490,11 @@ callback_dumb_increment(struct libwebsocket_context *context,
 		}
 		incoming_str[i] = 0;
 
-		username[LWS_SEND_BUFFER_PRE_PADDING] = 'u';
+		/*username[LWS_SEND_BUFFER_PRE_PADDING] = 'u';
 		username[LWS_SEND_BUFFER_PRE_PADDING+1] = 's';
 		username[LWS_SEND_BUFFER_PRE_PADDING+2] = 'e';
 		username[LWS_SEND_BUFFER_PRE_PADDING+3] = 'r';
-		//username[LWS_SEND_BUFFER_PRE_PADDING+11] = 0x00;
+		username[LWS_SEND_BUFFER_PRE_PADDING+11] = 0x00;
 
 		password[LWS_SEND_BUFFER_PRE_PADDING] = 'p';
 		password[LWS_SEND_BUFFER_PRE_PADDING+1] = 'a';
@@ -505,25 +504,25 @@ callback_dumb_increment(struct libwebsocket_context *context,
 		password[LWS_SEND_BUFFER_PRE_PADDING+5] = 'o';
 		password[LWS_SEND_BUFFER_PRE_PADDING+6] = 'r';
 		password[LWS_SEND_BUFFER_PRE_PADDING+7] = 'd';
-		//password[LWS_SEND_BUFFER_PRE_PADDING+10] = 0x00;
+		password[LWS_SEND_BUFFER_PRE_PADDING+10] = 0x00;*/
 
 		if(strcmp("INIT",incoming_str)==0)
 		{
 			printf("OK! Request is valid!\n");
 
-			//TODO Lancia il popup di windows per richiedere la conferma di rilascio password
-
-			if(get_credential(username,password) == FALSE)
+			if(get_credential(&username[LWS_SEND_BUFFER_PRE_PADDING],&password[LWS_SEND_BUFFER_PRE_PADDING]) == FALSE)
 			{
 				printf("Data not ready!\n");
 				break;
 			}
 			
+
+			//Lancia il popup di windows per richiedere la conferma di rilascio password
 			if(send_notification() == TRUE)
 			{
 				//Invio credenziali...
-				libwebsocket_write(wsi, &username[LWS_SEND_BUFFER_PRE_PADDING], strlen((char *)username), LWS_WRITE_TEXT);
-				libwebsocket_write(wsi, &password[LWS_SEND_BUFFER_PRE_PADDING], strlen((char *)password), LWS_WRITE_TEXT);
+				libwebsocket_write(wsi, &username[LWS_SEND_BUFFER_PRE_PADDING], strlen((char *)&username[LWS_SEND_BUFFER_PRE_PADDING]), LWS_WRITE_TEXT);
+				libwebsocket_write(wsi, &password[LWS_SEND_BUFFER_PRE_PADDING], strlen((char *)&password[LWS_SEND_BUFFER_PRE_PADDING]), LWS_WRITE_TEXT);
 			}
 		}
 		else

@@ -1,6 +1,20 @@
 #include "MifareRFID.h"
 #include <SPI.h>
-#include <MFRC522.h>
+#include <MFRC522.h
+
+ /*----------------------------------------------------------------------------- Nicola Coppola
+ * Pin layout should be as follows:
+ * Signal     Pin              Pin               Pin
+ *            Arduino Uno      Arduino Mega      MFRC522 board
+ * ------------------------------------------------------------
+ * Reset      9                5                 RST
+ * SPI SS     10               53                SDA
+ * SPI MOSI   11               52                MOSI
+ * SPI MISO   12               51                MISO
+ * SPI SCK    13               50                SCK
+ *
+ * The reader can be found on eBay for around 5 dollars. Search for "mf-rc522" on ebay.com. 
+ */
 
 #define BAUD_RATE 115200
 #define LED 6

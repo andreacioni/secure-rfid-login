@@ -1,76 +1,9 @@
-﻿Compilazione avviata 11/05/2014 21:42:54.
-     1>Progetto "C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\build\ZLIB.vcxproj" sul nodo 2 (destinazioni: build).
-     1>PrepareForBuild:
-         Creazione directory "C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\build\lib\Debug\".
-       InitializeBuildStatus:
-         Creazione di "ZLIB.dir\Debug\ZLIB.unsuccessfulbuild". È stato specificato "AlwaysCreate".
-       CustomBuild:
-         Building Custom Rule C:/Users/Andrea/Desktop/myProj/secure-rfid-login/app/libwebsockets-master/CMakeLists.txt
-         CMake does not need to re-run because C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\build\CMakeFiles\generate.stamp is up-to-date.
-       ClCompile:
-         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I"C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\build" /I"C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\lib" /I"C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\win32port\win32helpers" /I"C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\win32port\zlib" /I"C:\OpenSSL-Win32\include" /Zi /nologo /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D CMAKE_BUILD /D _CRT_SECURE_NO_DEPRECATE /D _CRT_NONSTDC_NO_DEPRECATE /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"ZLIB.dir\Debug\\" /Fd"ZLIB.dir\Debug\vc100.pdb" /Gd /TC /analyze- /errorReport:prompt ..\win32port\zlib\adler32.c ..\win32port\zlib\compress.c ..\win32port\zlib\crc32.c ..\win32port\zlib\deflate.c ..\win32port\zlib\gzclose.c ..\win32port\zlib\gzio.c ..\win32port\zlib\gzlib.c ..\win32port\zlib\gzread.c ..\win32port\zlib\gzwrite.c ..\win32port\zlib\infback.c ..\win32port\zlib\inffast.c ..\win32port\zlib\inflate.c ..\win32port\zlib\inftrees.c ..\win32port\zlib\trees.c ..\win32port\zlib\uncompr.c ..\win32port\zlib\zutil.c
-         adler32.c
-         compress.c
-         crc32.c
-         deflate.c
-         gzclose.c
-         gzio.c
-     1>..\win32port\zlib\gzio.c(980): warning C4013: 'zstrerror' non definita. Verrà considerata come esterna che restituisce un int.
-     1>..\win32port\zlib\gzio.c(980): warning C4047: ':': 'int' differisce da 'char *' nei livelli di riferimento indiretto
-         gzlib.c
-         gzread.c
-         gzwrite.c
-         infback.c
-         inffast.c
-         inflate.c
-         inftrees.c
-         trees.c
-         uncompr.c
-         zutil.c
-         Generazione del codice in corso...
-       Lib:
-         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\Lib.exe /OUT:"C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\build\lib\Debug\ZLIB.lib" /NOLOGO ZLIB.dir\Debug\adler32.obj
-         ZLIB.dir\Debug\compress.obj
-         ZLIB.dir\Debug\crc32.obj
-         ZLIB.dir\Debug\deflate.obj
-         ZLIB.dir\Debug\gzclose.obj
-         ZLIB.dir\Debug\gzio.obj
-         ZLIB.dir\Debug\gzlib.obj
-         ZLIB.dir\Debug\gzread.obj
-         ZLIB.dir\Debug\gzwrite.obj
-         ZLIB.dir\Debug\infback.obj
-         ZLIB.dir\Debug\inffast.obj
-         ZLIB.dir\Debug\inflate.obj
-         ZLIB.dir\Debug\inftrees.obj
-         ZLIB.dir\Debug\trees.obj
-         ZLIB.dir\Debug\uncompr.obj
-         ZLIB.dir\Debug\zutil.obj
-     1>gzio.obj : warning LNK4006: _gzopen giÓ definito in gzlib.obj; seconda definizione ignorata
-     1>gzio.obj : warning LNK4006: _gzdopen giÓ definito in gzlib.obj; seconda definizione ignorata
-     1>gzio.obj : warning LNK4006: _gzsetparams giÓ definito in gzwrite.obj; seconda definizione ignorata
-     1>gzio.obj : warning LNK4006: _gzread giÓ definito in gzread.obj; seconda definizione ignorata
-     1>gzio.obj : warning LNK4006: _gzgetc giÓ definito in gzread.obj; seconda definizione ignorata
-     1>gzio.obj : warning LNK4006: _gzungetc giÓ definito in gzread.obj; seconda definizione ignorata
-     1>gzio.obj : warning LNK4006: _gzgets giÓ definito in gzread.obj; seconda definizione ignorata
-     1>gzio.obj : warning LNK4006: _gzwrite giÓ definito in gzwrite.obj; seconda definizione ignorata
-     1>gzio.obj : warning LNK4006: _gzprintf giÓ definito in gzwrite.obj; seconda definizione ignorata
-     1>gzio.obj : warning LNK4006: _gzputc giÓ definito in gzwrite.obj; seconda definizione ignorata
-     1>gzio.obj : warning LNK4006: _gzputs giÓ definito in gzwrite.obj; seconda definizione ignorata
-     1>gzio.obj : warning LNK4006: _gzflush giÓ definito in gzwrite.obj; seconda definizione ignorata
-     1>gzio.obj : warning LNK4006: _gzseek giÓ definito in gzlib.obj; seconda definizione ignorata
-     1>gzio.obj : warning LNK4006: _gzrewind giÓ definito in gzlib.obj; seconda definizione ignorata
-     1>gzio.obj : warning LNK4006: _gztell giÓ definito in gzlib.obj; seconda definizione ignorata
-     1>gzio.obj : warning LNK4006: _gzeof giÓ definito in gzlib.obj; seconda definizione ignorata
-     1>gzio.obj : warning LNK4006: _gzerror giÓ definito in gzlib.obj; seconda definizione ignorata
-     1>gzio.obj : warning LNK4006: _gzclearerr giÓ definito in gzlib.obj; seconda definizione ignorata
-     1>gzclose.obj : warning LNK4006: _gzclose giÓ definito in gzio.obj; seconda definizione ignorata
-     1>gzclose.obj : warning LNK4221: Questo file oggetto non definisce simboli pubblici non definiti in precedenza, pertanto verrÓ utilizzato da qualsiasi operazione di collegamento che utilizza la libreria
-         ZLIB.vcxproj -> C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\build\lib\Debug\ZLIB.lib
-       FinalizeBuildStatus:
-         Eliminazione del file "ZLIB.dir\Debug\ZLIB.unsuccessfulbuild" in corso.
-         Aggiornamento timestamp di "ZLIB.dir\Debug\ZLIB.lastbuildstate".
-     1>Compilazione progetto "C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\build\ZLIB.vcxproj" (destinazioni: build) completata.
+﻿Compilazione avviata 20/05/2014 22:19:12.
+     1>Progetto "C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\build\ZLIB.vcxproj" sul nodo 2 (destinazioni: clean).
+     1>_PrepareForClean:
+         Eliminazione del file "ZLIB.dir\Debug\ZLIB.lastbuildstate" in corso.
+     1>Compilazione progetto "C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\build\ZLIB.vcxproj" (destinazioni: clean) completata.
 
 Compilazione completata.
 
-Tempo trascorso 00:00:01.87
+Tempo trascorso 00:00:00.12

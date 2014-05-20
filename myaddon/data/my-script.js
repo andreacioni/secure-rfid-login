@@ -44,7 +44,7 @@ if (window.WebSocket)
 				document.getElementById('utente').blur();
 				n_message = 1;
 			} else {
-			document.getElementById('user').focus();
+			document.getElementById('j_password').focus();
 			$("#j_password").val(buff);
 			document.getElementById('j_password').blur();
 			n_message = 0;
