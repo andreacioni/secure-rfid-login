@@ -23,22 +23,26 @@ int start_rfid_reader(NOTIFYICONDATA *notify)
 		if(receive_keep_alive(port) == SS_RECEIVED)
 		{
 			//One message is arriving...poll to the COM port for max. 10s
-			if(wait_message(port,TIMEOUT,(unsigned char *) buff) == 1) 			//			!!!!!Non funziona il timeout!!!!!	
+			
+			is_data_present = FALSE;
+
+			if(wait_message(port,TIMEOUT,(unsigned char *) buff, ((MAX_MESSAGE_LENGHT*4)+4)) == 1) 			//			!!!!!Non funziona il timeout!!!!!	
 			{
 				printf("message received!\n");
 
 				//Clean the buffer to prevent error
-				is_data_present = FALSE;
 				memset(name,0,MAX_MESSAGE_LENGHT);
 				memset(surname,0,MAX_MESSAGE_LENGHT);
 				memset(username,0,MAX_MESSAGE_LENGHT);
 				memset(password,0,MAX_MESSAGE_LENGHT);
 
 				//Set the data into the correct array
-				memcpy(name,&buff[MAX_MESSAGE_LENGHT*0],MAX_MESSAGE_LENGHT);
-				memcpy(surname,&buff[MAX_MESSAGE_LENGHT*1],MAX_MESSAGE_LENGHT);
-				memcpy(username,&buff[MAX_MESSAGE_LENGHT*2],MAX_MESSAGE_LENGHT);
-				memcpy(password,&buff[MAX_MESSAGE_LENGHT*3],MAX_MESSAGE_LENGHT);
+				memcpy(name,&buff[(MAX_MESSAGE_LENGHT+1)*0],MAX_MESSAGE_LENGHT);
+				memcpy(surname,&buff[(MAX_MESSAGE_LENGHT+1)*1],MAX_MESSAGE_LENGHT);
+				memcpy(username,&buff[(MAX_MESSAGE_LENGHT+1)*2],MAX_MESSAGE_LENGHT);
+				memcpy(password,&buff[(MAX_MESSAGE_LENGHT+1)*3],MAX_MESSAGE_LENGHT);
+				
+				//Data are ready and correctly sent
 				is_data_present = TRUE;
 
 				//Send notification

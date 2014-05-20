@@ -24,4 +24,4 @@ int receive_keep_alive(int port);
 void write_block(int port,unsigned char * block, size_t len,unsigned char block_num);
 
 //Return 0 if message is corrupt or 1 if message is valid (you can take it from buff)
-int wait_message(int port, int timeout, unsigned char *buff);
+int wait_message(int port, int timeout, unsigned char *buff, int buff_lenght);

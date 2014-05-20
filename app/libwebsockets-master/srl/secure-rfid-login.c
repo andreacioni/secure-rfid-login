@@ -83,8 +83,8 @@ BOOL send_notification()
 
 BOOL get_credential(unsigned char *username, unsigned char *password)
 {
-	char rfid_username[MAX_CONTENT_LENGHT];
-	char rfid_password[MAX_CONTENT_LENGHT];
+	char rfid_username[MAX_CONTENT_LENGHT] = {0};
+	char rfid_password[MAX_CONTENT_LENGHT] = {0};
 	int user_len;
 	int pass_len;
 	int res;
@@ -94,11 +94,8 @@ BOOL get_credential(unsigned char *username, unsigned char *password)
 	if((pass_len = get_password(rfid_password)) == -1)
 		return FALSE;
 
-	user_len = strlen(rfid_username);
-	pass_len = strlen(rfid_password);
-
-	strcpy_s(rfid_username,user_len,username[MAX_CONTENT_LENGHT]);
-	strcpy_s(rfid_password,user_len,password[MAX_CONTENT_LENGHT]);
+	strcpy_s(username,user_len,rfid_username);
+	strcpy_s(password,pass_len,rfid_password);
 
 	return FALSE;
 
