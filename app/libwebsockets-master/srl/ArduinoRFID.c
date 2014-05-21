@@ -20,7 +20,8 @@ int wait_for_device()
 	char uid[4];
 
 	//char buffer[278 + 1];
-
+	
+	printf("[SERIAL]: ");
 	printf("Searching device...");
 
 	while(port_number < 16)
@@ -37,6 +38,7 @@ int wait_for_device()
 			
 			if(RS232_SendBuf(port_number,(unsigned char *) INIT,5)==1)
 			{
+				printf("[SERIAL]: ");
 				printf("send error: COM%i\n",port_number+1);
 			}
 			else
@@ -55,6 +57,7 @@ int wait_for_device()
 					
 					if(strcmp(OK,"OK!")==0)
 					{
+						printf("[SERIAL]: ");
 						printf("Device discovered!\n"); // lettore riconosciuto!
 
 						Sleep(500);
@@ -87,12 +90,14 @@ int wait_for_device()
 					}
 					else
 					{
+						printf("[SERIAL]: ");
 						printf("messaggio non valido\n");
 					}
 					
 				}
 				else
 				{
+					printf("[SERIAL]: ");
 					printf("non e' arrivato niente!\n");
 				}			
 				
@@ -101,6 +106,7 @@ int wait_for_device()
 
 			port_number++;
 			RS232_CloseComport(port_number);
+			printf("[SERIAL]: ");
 			printf("port closed!\n");
 
 		}
@@ -114,6 +120,7 @@ int wait_for_device()
 void send_keep_alive(int port)
 {
 	RS232_cputs(port, hey_message);
+	printf("[SERIAL]: ");
 	printf("KA sent!\n");
 }
 
@@ -125,10 +132,12 @@ int receive_keep_alive(int port)
 	switch(compare_keep_alive())
 	{
 		case KA_RECEIVED:
+			printf("[SERIAL]: ");
 			printf("KA response received!\n");
 			ret = KA_RECEIVED;
 			break;
 		case SS_RECEIVED:
+			printf("[SERIAL]: ");
 			printf("SS response received!\n");
 			ret = SS_RECEIVED;
 			break;
@@ -156,6 +165,7 @@ void write_block(int port,unsigned char * block, size_t len,unsigned char block_
 
 	if(len!=64)
 	{
+		printf("[SERIAL]: ");
 		printf("Must be 64 kByte!\n");
 		return;
 	}
@@ -176,11 +186,13 @@ void write_block(int port,unsigned char * block, size_t len,unsigned char block_
 		Sleep(500);
 		if(RS232_SendBuf(port,&my_block[i*16],16) != -1)
 		{
+			printf("[SERIAL]: ");
 			printf("sent!\n");
 		}
 	}
 
 	Sleep(500);
+	printf("[SERIAL]: ");
 	printf("Block wrote!\n");
 
 }
@@ -197,7 +209,8 @@ int wait_message(int port,int timeout, unsigned char *buff, int buff_lenght)
 	
 	if(buff_lenght != ((MAX_MESSAGE_LENGHT*4)+4))
 		return result;
-
+	
+	printf("[SERIAL]: ");
 	printf("start timer...\n");
 
 	while((time(NULL) < end_time) && (received < buff_lenght)) //It stops when timer timeout accurred or when received is at the max size that the buffer could contain
@@ -212,11 +225,13 @@ int wait_message(int port,int timeout, unsigned char *buff, int buff_lenght)
 		
 		//Sleep(1000);
 	}
-
+	
+	printf("[SERIAL]: ");
 	printf("finished timer!\n");
 	
 	if(something_arrived == 1)
 	{
+		printf("[SERIAL]: ");
 		printf("something arrived!\n");
 		if((check_message(&buff[0],MAX_MESSAGE_LENGHT+1,0x30)&&
 		check_message(&buff[65],MAX_MESSAGE_LENGHT+1,0x31)&&

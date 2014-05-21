@@ -15,6 +15,8 @@
 #define BLOCK_USER 3
 #define BLOCK_PASS 4
 
+#define NUM_OF_BLOCKS 4
+
 // ------------------------------------------------ MIFARE BLOCKS DEFINITIONS 
 #define BLOCK_NOME_1 0x04
 #define BLOCK_NOME_2 0x05
@@ -56,6 +58,7 @@ int select_card(MFRC522 *mfrc522);
 void print_serial(MFRC522 *mfrc522);
 void stop_write(MFRC522 *mrfc);
 void write_blocks(MFRC522 *mrfc522,MFRC522::MIFARE_Key *key,int select,unsigned char buff[]);
+boolean read_blocks(MFRC522 *mrfc522,MFRC522::MIFARE_Key *key,int select,byte *buff);
 int error_dump(MFRC522 *mfrc522,int error_code,unsigned char res);
 
 

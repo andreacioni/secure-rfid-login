@@ -73,7 +73,7 @@ BOOL send_notification()
 {
   int result;
   
-  result = MessageBox( NULL,"Do you want to release your credentials to ?", "Credential releasing", MB_ICONWARNING | MB_YESNOCANCEL | MB_DEFBUTTON2 | MB_APPLMODAL );
+  result = MessageBox( NULL,"Do you want to release your credentials to ?\nWARNING! If you say YES your username/password will be sent over to the requesting page.\n", "Credential releasing", MB_ICONWARNING | MB_YESNOCANCEL | MB_DEFBUTTON2 | MB_APPLMODAL );
   
   if(result == IDYES)
     return TRUE;

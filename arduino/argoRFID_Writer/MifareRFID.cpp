@@ -1,6 +1,7 @@
 #include "MifareRFID.h"
 
 byte auth_trailer(MFRC522 *mfrc522,MFRC522::MIFARE_Key *key,byte trailer);
+void fill_array(byte *src,byte *dst, int len);
 
 void mifare_init(MFRC522 *mfrc522,MFRC522::MIFARE_Key *key, const unsigned char b_key[])
 {  
@@ -116,7 +117,7 @@ void write_blocks(MFRC522 *mfrc522,MFRC522::MIFARE_Key *key,int select,unsigned 
       if(error_dump(mfrc522,ERROR_WRITE,stat)!=0)
        break;
       
-      stat = stat = auth_trailer(mfrc522,key,TRAILER_3);
+      stat = auth_trailer(mfrc522,key,TRAILER_3);
       if(error_dump(mfrc522,ERROR_AUTH,stat)!=0)
         break;
       
@@ -245,6 +246,220 @@ void write_blocks(MFRC522 *mfrc522,MFRC522::MIFARE_Key *key,int select,unsigned 
     }    
 }
 
+boolean read_blocks(MFRC522 *mfrc522,MFRC522::MIFARE_Key *key,int select,byte *buff)
+{
+  byte stat;
+  byte tmp[18];
+  byte size_tmp = sizeof(tmp);
+  boolean error = true;
+
+    switch(select)
+    {
+      // ------------------------------------------------------ INIZIO BLOCCO NOME --------------------------------------------------------
+      case BLOCK_NAME:
+
+      stat = auth_trailer(mfrc522,key,TRAILER_1);
+      if(error_dump(mfrc522,ERROR_AUTH,stat)!=0){
+        error = false; break;}
+
+      stat = mfrc522->MIFARE_Read(BLOCK_NOME_1, tmp, &size_tmp);
+      if(error_dump(mfrc522,ERROR_READ,stat)!=0) {
+        error = false; break;}
+      fill_array(&tmp[0],&buff[0],16);
+      
+      stat = mfrc522->MIFARE_Read(BLOCK_NOME_2, tmp, &size_tmp);
+      if(error_dump(mfrc522,ERROR_READ,stat)!=0) {
+        error = false; break;}
+      fill_array(&tmp[0],&buff[16],16);
+
+      stat = mfrc522->MIFARE_Read(BLOCK_NOME_3, tmp, &size_tmp);
+      if(error_dump(mfrc522,ERROR_READ,stat)!=0) {
+        error = false; break;}
+      fill_array(&tmp[0],&buff[32],16);
+
+      stat = auth_trailer(mfrc522,key,TRAILER_2);
+      if(error_dump(mfrc522,ERROR_AUTH,stat)!=0) {
+        error = false; break;}
+
+      stat = mfrc522->MIFARE_Read(BLOCK_NOME_4, tmp, &size_tmp);
+      if(error_dump(mfrc522,ERROR_READ,stat)!=0) {
+        error = false; break;}
+      fill_array(&tmp[0],&buff[48],16);
+ 
+      //Play a bip if name was wrote!
+      /*tone(speakerPin, tones[9]);
+      delay(500);
+      noTone(speakerPin);*/
+      
+      //Serial.write("Read: NAME\n");    
+
+      
+      /*byte b[18];
+      byte siz = sizeof(b);
+      stat = mfrc522.MIFARE_Read(BLOCK_NOME_1, b, &siz);
+      if (stat != MFRC522::STATUS_OK) 
+      {
+          Serial.print("PCD_Read() failed: ");
+          Serial.println(mfrc522.GetStatusCodeName(stat));
+          break;
+      }
+      
+      for(int i=0;i<16;i++)
+        Serial.write(b[i]);*/
+      
+      break;
+    
+    // ------------------------------------------------------ INIZIO BLOCCO COGNOME --------------------------------------------------------
+    case BLOCK_COGN:
+
+      stat = mfrc522->MIFARE_Read(BLOCK_COGN_1, tmp, &size_tmp);
+      if(error_dump(mfrc522,ERROR_READ,stat)!=0) {
+        error = false; break;}
+         fill_array(&tmp[0],&buff[0],16);
+
+      stat = mfrc522->MIFARE_Read(BLOCK_COGN_2, tmp, &size_tmp);
+      if(error_dump(mfrc522,ERROR_READ,stat)!=0) {
+        error = false; break;}
+      fill_array(&tmp[0],&buff[16],16);
+
+      stat = auth_trailer(mfrc522,key,TRAILER_3);
+      if(error_dump(mfrc522,ERROR_AUTH,stat)!=0) {
+        error = false; break;}
+
+      stat = mfrc522->MIFARE_Read(BLOCK_COGN_3, tmp, &size_tmp);
+      if(error_dump(mfrc522,ERROR_READ,stat)!=0) {
+        error = false; break;}
+      fill_array(&tmp[0],&buff[32],16);
+
+      stat = mfrc522->MIFARE_Read(BLOCK_COGN_4, tmp, &size_tmp);
+      if(error_dump(mfrc522,ERROR_READ,stat)!=0) {
+        error = false; break;}
+      fill_array(&tmp[0],&buff[48],16);
+      //stat = mfrc522.PCD_Authenticate(MFRC522::PICC_CMD_MF_AUTH_KEY_A, TRAILER_2, &key, &(mfrc522.uid)); //si usa l'autenticazione fatta prima
+       
+      //Play a bip if name was wrote!
+     /* tone(speakerPin, tones[9]);
+      delay(500);
+      noTone(speakerPin);*/
+      
+      //Serial.write("Read: SURNAME\n");
+      
+      /*byte b[18];
+      byte siz = sizeof(b);
+      stat = mfrc522.MIFARE_Read(BLOCK_NOME_1, b, &siz);
+      if (stat != MFRC522::STATUS_OK) 
+      {
+          Serial.print("PCD_Read() failed: ");
+          Serial.println(mfrc522.GetStatusCodeName(stat));
+          break;
+      }
+      
+      for(int i=0;i<16;i++)
+        Serial.write(b[i]);*/
+      
+      break;  
+      
+      // ------------------------------------------------------ INIZIO BLOCCO USERNAME --------------------------------------------------------
+      case BLOCK_USER:
+      
+      stat = mfrc522->MIFARE_Read(BLOCK_USER_1, tmp, &size_tmp);
+      if(error_dump(mfrc522,ERROR_READ,stat)!=0) {
+        error = false; break;}
+      fill_array(&tmp[0],&buff[0],16);
+
+      stat = auth_trailer(mfrc522,key,TRAILER_4);
+      if(error_dump(mfrc522,ERROR_AUTH,stat)!=0) {
+        error = false; break;}
+
+      stat = mfrc522->MIFARE_Read(BLOCK_USER_2, tmp, &size_tmp);
+      if(error_dump(mfrc522,ERROR_READ,stat)!=0) {
+        error = false; break;}
+      fill_array(&tmp[0],&buff[16],16);
+
+      stat = mfrc522->MIFARE_Read(BLOCK_USER_3, tmp, &size_tmp);
+      if(error_dump(mfrc522,ERROR_READ,stat)!=0) {
+        error = false; break;}
+      fill_array(&tmp[0],&buff[32],16);
+
+      stat = mfrc522->MIFARE_Read(BLOCK_USER_4, tmp, &size_tmp);
+      if(error_dump(mfrc522,ERROR_READ,stat)!=0) {
+        error = false; break;}
+      fill_array(&tmp[0],&buff[48],16);
+      //Play a bip if name was wrote!
+      /* tone(speakerPin, tones[9]);
+      delay(500);
+      noTone(speakerPin);*/
+      
+      //Serial.write("Read: USERNAME\n");
+      
+      /*byte b[18];
+      byte siz = sizeof(b);
+      stat = mfrc522.MIFARE_Read(BLOCK_NOME_1, b, &siz);
+      if (stat != MFRC522::STATUS_OK) 
+      {
+          Serial.print("PCD_Read() failed: ");
+          Serial.println(mfrc522.GetStatusCodeName(stat));
+          break;
+      }
+      
+      for(int i=0;i<16;i++)
+        Serial.write(b[i]);*/
+      
+      break;  
+       // ------------------------------------------------------ INIZIO BLOCCO PASSWORD --------------------------------------------------------
+      case BLOCK_PASS:
+       
+      stat = auth_trailer(mfrc522,key,TRAILER_5);
+      if(error_dump(mfrc522,ERROR_AUTH,stat)!=0) {
+        error = false; break;}
+
+      stat = mfrc522->MIFARE_Read(BLOCK_PASS_1, tmp, &size_tmp);
+      if(error_dump(mfrc522,ERROR_READ,stat)!=0) {
+        error = false; break;}
+      fill_array(&tmp[0],&buff[0],16);
+
+      stat = mfrc522->MIFARE_Read(BLOCK_PASS_2, tmp, &size_tmp);
+      if(error_dump(mfrc522,ERROR_READ,stat)!=0) {
+        error = false; break;}
+      fill_array(&tmp[0],&buff[16],16);
+
+      stat = mfrc522->MIFARE_Read(BLOCK_PASS_3, tmp, &size_tmp);
+      if(error_dump(mfrc522,ERROR_READ,stat)!=0) {
+        error = false; break;}
+      fill_array(&tmp[0],&buff[32],16);
+
+      stat = auth_trailer(mfrc522,key,TRAILER_6);
+      if(error_dump(mfrc522,ERROR_AUTH,stat)!=0) {
+        error = false; break;}
+
+      stat = mfrc522->MIFARE_Read(BLOCK_PASS_4, tmp, &size_tmp);
+      if(error_dump(mfrc522,ERROR_READ,stat)!=0) {
+        error = false; break;}
+      fill_array(&tmp[0],&buff[48],16);
+      //Play a bip if name was wrote!
+     /* tone(speakerPin, tones[9]);
+      delay(500);
+      noTone(speakerPin);*/
+      
+      //Serial.write("Read PASSWORD\n");
+      
+      /*byte b[18];
+      byte siz = sizeof(b);
+      stat = mfrc522.MIFARE_Read(BLOCK_NOME_1, b, &siz);
+      if (stat != MFRC522::STATUS_OK) 
+      {
+          Serial.print("PCD_Read() failed: ");
+          Serial.println(mfrc522.GetStatusCodeName(stat));
+          break;
+      }
+      
+      for(int i=0;i<16;i++)
+        Serial.write(b[i]);*/
+      
+      break;    
+    }    
+}
+
 int error_dump(MFRC522 *mfrc522,int error_code,byte res)
 {
     switch(error_code)
@@ -285,6 +500,15 @@ int error_dump(MFRC522 *mfrc522,int error_code,byte res)
     }
     
     return 0;
+}
+
+void fill_array(byte *src,byte *dst, int len)
+{
+  for(int i=0; i<len;i++)
+  {
+    dst[i] = src[i];
+  }
+
 }
 
 

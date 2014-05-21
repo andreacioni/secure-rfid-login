@@ -9,11 +9,4 @@
 
 #define DEBUG
 
-#undef WINDOWS
-#define LINUX
-
-#ifdef LINUX
- #define LINUX_EXE_PATH "/bin/argo"
-#endif 
-
 

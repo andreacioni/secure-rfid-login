@@ -1,8 +1,8 @@
 #include "MifareRFID.h"
 #include <SPI.h>
-#include <MFRC522.h
+#include <MFRC522.h>
 
- /*----------------------------------------------------------------------------- Nicola Coppola
+ /*-------------------------------------------------------------------------------------
  * Pin layout should be as follows:
  * Signal     Pin              Pin               Pin
  *            Arduino Uno      Arduino Mega      MFRC522 board

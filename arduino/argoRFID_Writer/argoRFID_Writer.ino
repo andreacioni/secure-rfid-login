@@ -1,3 +1,7 @@
+#include "MifareRFID.h"
+#include <SPI.h>
+#include <MFRC522.h>
+
 /*--------------------------------------------------------------------------------------
  * Pin layout should be as follows:
  * Signal     Pin              Pin               Pin
@@ -11,10 +15,6 @@
  *
  * The reader can be found on eBay for around 5 dollars. Search for "mf-rc522" on ebay.com. 
  */
-
-#include "MifareRFID.h"
-#include <SPI.h>
-#include <MFRC522.h>
 
 #define BAUD_RATE 115200
 #define LED 6

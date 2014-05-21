@@ -1,25 +1,29 @@
 //https://www.portaleargo.it/argoweb/scuolanext/;jsessionid=82BFF40C528E121CD4E66B8A6085F085.node1
-var socket;
-var n_message = 0;
-var error_occured = false;
+
+var socket;							//Socket that connect to the local app
+const port_number = 7681;
+
+var n_message = 0;				//Message 0 is USERNAME and message 1 is PASSWORD
+var error_occurred = false;
+
+const init_message = "INIT";
 
 function securedAuth() 
 {
-	if(error_occured == false)
-		socket.send("INIT");  	
+	if(error_occurred == false)
+		socket.send(init_message);  	
 }
-
 
 // Check for the various File API support.
 if (window.WebSocket) 
 {  
  	 //Aggiunge un nuovo bottone alla scheramata di login
-	$(".footer").append("<table width='100%'><tr><td style='padding-right: 170px; padding-top: 10px' > <input id='secure_access' type='button' name='secure' 							value='Attendi...' class='button' /> </td></tr> <tr><td style='padding-top: 10px' > <p align=center><font size='2'>Se hai problemi con l'accesso sicuro visita <a href='http://www.andysite.altervista.org'>questa pagina...</a></font></p> </td></tr></table>");
+	$(".footer").append("<table width='100%'><tr><td style='padding-right: 170px; padding-top: 10px' > <input id='secure_access' type='button' name='secure' value='Attendi...' class='button' /> </td></tr> <tr><td style='padding-top: 10px' > <p align=center><font size='2'>Se hai problemi con l'accesso sicuro visita <a href='http://www.andysite.altervista.org'>questa pagina...</a></font></p> </td></tr></table>");
 	
 	document.getElementById("secure_access").addEventListener('click', securedAuth, false);	
 	
 	//Apri web socketz
-  		socket = new WebSocket("wss://127.0.0.1:7681/","dumb-increment-protocol");    
+  		socket = new WebSocket("wss://127.0.0.1:" + port_number + "/","dumb-increment-protocol");    
   		
   		socket.onopen = function () {
 			document.getElementById('secure_access').value = "Accesso sicuro";
@@ -30,7 +34,7 @@ if (window.WebSocket)
 		socket.onerror = function (error) {
 	    	//console.log('WebSocket Error ' + error);
 	    	document.getElementById('secure_access').value = "Errore!";
-			error_occured = true;
+			error_occurred = true;
 		};
 	
 		// Messaggi dal server
@@ -50,11 +54,7 @@ if (window.WebSocket)
 			n_message = 0;
 			}
 		};
-
-	//Riempie i campi
-	//$("#utente").val("user");
-	//$("#j_password").val("pass");
   
 } else { //Not supported
-  alert('The File APIs are not fully supported in this browser, update Firefox!');
+  alert('The WebSocket API is not fully supported in this browser, update Firefox!');
 }

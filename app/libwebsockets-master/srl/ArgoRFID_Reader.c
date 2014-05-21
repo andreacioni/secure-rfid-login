@@ -28,6 +28,7 @@ int start_rfid_reader(NOTIFYICONDATA *notify)
 
 			if(wait_message(port,TIMEOUT,(unsigned char *) buff, ((MAX_MESSAGE_LENGHT*4)+4)) == 1) 			//			!!!!!Non funziona il timeout!!!!!	
 			{
+				printf("[SERIAL]: ");
 				printf("message received!\n");
 
 				//Clean the buffer to prevent error
@@ -49,7 +50,10 @@ int start_rfid_reader(NOTIFYICONDATA *notify)
 				sendInfoNotification();
 			}
 			else
+			{	
+				printf("[SERIAL]: ");
 				printf("INVALID message received!\n");
+			}
 		}
 		Sleep(1000);
 	}
