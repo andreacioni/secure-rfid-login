@@ -1,9 +1,16 @@
-﻿Compilazione avviata 20/05/2014 22:19:11.
-     1>Progetto "C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\build\ALL_BUILD.vcxproj" sul nodo 2 (destinazioni: clean).
-     1>_PrepareForClean:
-         Eliminazione del file "Win32\Debug\ALL_BUILD\ALL_BUILD.lastbuildstate" in corso.
-     1>Compilazione progetto "C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\build\ALL_BUILD.vcxproj" (destinazioni: clean) completata.
+﻿Compilazione avviata 21/05/2014 14:30:13.
+     1>Progetto "C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\build\ALL_BUILD.vcxproj" sul nodo 4 (destinazioni: build).
+     1>InitializeBuildStatus:
+         Creazione di "Win32\Debug\ALL_BUILD\ALL_BUILD.unsuccessfulbuild". È stato specificato "AlwaysCreate".
+       CustomBuild:
+         Building Custom Rule C:/Users/Andrea/Desktop/myProj/secure-rfid-login/app/libwebsockets-master/CMakeLists.txt
+         CMake does not need to re-run because C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\build\CMakeFiles\generate.stamp is up-to-date.
+         Build all projects
+       FinalizeBuildStatus:
+         Eliminazione del file "Win32\Debug\ALL_BUILD\ALL_BUILD.unsuccessfulbuild" in corso.
+         Aggiornamento timestamp di "Win32\Debug\ALL_BUILD\ALL_BUILD.lastbuildstate".
+     1>Compilazione progetto "C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\build\ALL_BUILD.vcxproj" (destinazioni: build) completata.
 
 Compilazione completata.
 
-Tempo trascorso 00:00:00.11
+Tempo trascorso 00:00:00.47

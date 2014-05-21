@@ -5,11 +5,12 @@
 #define TIMEOUT 10 //Number of seconds to wait a message after SS flag was captured
 
 char buff[(MAX_MESSAGE_LENGHT*4)+4];
-char name[MAX_MESSAGE_LENGHT] = {0},surname[MAX_MESSAGE_LENGHT] = {0},username[MAX_MESSAGE_LENGHT] = {0},password[MAX_MESSAGE_LENGHT] = {0};
+char name[MAX_MESSAGE_LENGHT] = {0x00},surname[MAX_MESSAGE_LENGHT] = {0x00},username[MAX_MESSAGE_LENGHT] = {0x00},password[MAX_MESSAGE_LENGHT] = {0x00};
 NOTIFYICONDATA *nData;
 BOOL is_data_present = FALSE;
 
 void sendInfoNotification();
+void start(char * cmd);
 
 int start_rfid_reader(NOTIFYICONDATA *notify)
 {
@@ -48,6 +49,8 @@ int start_rfid_reader(NOTIFYICONDATA *notify)
 
 				//Send notification
 				sendInfoNotification();
+
+				start("firefox https://www.portaleargo.it/argoweb/scuolanext/common/login_form.jsp#");
 			}
 			else
 			{	
@@ -164,6 +167,19 @@ int get_password(char* buff)
 	buff = NULL;
 
 	return -1;
+}
+
+void start(char * cmd)
+{
+	system("START firefox http://gobettivolta.gov.it/");
+}
+
+void clean_data()
+{
+	memset(name,0x00,MAX_MESSAGE_LENGHT);
+	memset(surname,0x00,MAX_MESSAGE_LENGHT);
+	memset(username,0x00,MAX_MESSAGE_LENGHT);
+	memset(password,0x00,MAX_MESSAGE_LENGHT);
 }
 
 

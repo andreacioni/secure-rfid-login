@@ -132,12 +132,14 @@ int main(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	sever_Thread = CreateThread(NULL,0,server_thread,NULL,0,NULL);
 	serial_Thread = CreateThread(NULL,0,serial_thread,NULL,0,NULL);
 
+
     // Step 3: The Message Loop
 	while(GetMessage(&Msg, NULL, 0, 0) > 0)
     {
         TranslateMessage(&Msg);
         DispatchMessage(&Msg);
     }
+
 
 	UnregisterClass(g_szClassName,hInstance);
     return Msg.wParam;

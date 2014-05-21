@@ -1,9 +1,78 @@
-﻿Compilazione avviata 20/05/2014 22:19:11.
-     1>Progetto "C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\build\websockets_shared.vcxproj" sul nodo 2 (destinazioni: clean).
-     1>_PrepareForClean:
-         Eliminazione del file "websockets_shared.dir\Debug\websockets_shared.lastbuildstate" in corso.
-     1>Compilazione progetto "C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\build\websockets_shared.vcxproj" (destinazioni: clean) completata.
+﻿Compilazione avviata 21/05/2014 14:29:59.
+     1>Progetto "C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\build\websockets_shared.vcxproj" sul nodo 3 (destinazioni: build).
+     1>InitializeBuildStatus:
+         Creazione di "websockets_shared.dir\Debug\websockets_shared.unsuccessfulbuild". È stato specificato "AlwaysCreate".
+       CustomBuild:
+         Building Custom Rule C:/Users/Andrea/Desktop/myProj/secure-rfid-login/app/libwebsockets-master/CMakeLists.txt
+         CMake does not need to re-run because C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\build\CMakeFiles\generate.stamp is up-to-date.
+       ClCompile:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I"C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\build" /I"C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\lib" /I"C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\win32port\win32helpers" /I"C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\win32port\zlib" /I"C:\OpenSSL-Win32\include" /Zi /nologo /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D LWS_DLL /D LWS_INTERNAL /D CMAKE_BUILD /D _CRT_SECURE_NO_DEPRECATE /D _CRT_NONSTDC_NO_DEPRECATE /D "CMAKE_INTDIR=\"Debug\"" /D websockets_shared_EXPORTS /D _WINDLL /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"websockets_shared.dir\Debug\\" /Fd"websockets_shared.dir\Debug\vc100.pdb" /Gd /TC /analyze- /errorReport:prompt "..\lib\base64-decode.c" ..\lib\handshake.c ..\lib\libwebsockets.c ..\lib\output.c ..\lib\parsers.c "..\lib\sha-1.c" ..\lib\server.c "..\lib\server-handshake.c" ..\lib\extension.c "..\lib\extension-deflate-frame.c" "..\lib\extension-deflate-stream.c" "..\win32port\win32helpers\websock-w32.c" ..\win32port\win32helpers\gettimeofday.c
+         base64-decode.c
+         handshake.c
+     1>..\lib\handshake.c(265): warning C4133: 'funzione': tipi non compatibili. Da 'size_t *' a 'const char *'
+         libwebsockets.c
+         output.c
+     1>..\lib\output.c(62): warning C4018: '<': errata corrispondenza tra signed e unsigned
+     1>..\lib\output.c(68): warning C4018: '<': errata corrispondenza tra signed e unsigned
+     1>..\lib\output.c(75): warning C4018: '<': errata corrispondenza tra signed e unsigned
+     1>..\lib\output.c(184): warning C4018: '<': errata corrispondenza tra signed e unsigned
+     1>..\lib\output.c(462): warning C4244: '=': conversione da 'short' a 'unsigned char'. Possibile perdita di dati.
+         parsers.c
+     1>..\lib\parsers.c(385): warning C4244: '=': conversione da 'unsigned short' a 'unsigned char'. Possibile perdita di dati.
+     1>..\lib\parsers.c(541): warning C4244: '=': conversione da 'unsigned short' a 'unsigned char'. Possibile perdita di dati.
+     1>..\lib\parsers.c(546): warning C4244: '=': conversione da 'unsigned short' a 'unsigned char'. Possibile perdita di dati.
+         sha-1.c
+         server.c
+         server-handshake.c
+         extension.c
+         extension-deflate-frame.c
+         extension-deflate-stream.c
+         websock-w32.c
+         gettimeofday.c
+         Generazione del codice in corso...
+       ManifestResourceCompile:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"websockets_shared.dir\Debug\websockets.dll.embed.manifest.res" websockets_shared.dir\Debug\websockets_manifest.rc 
+       Link:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\build\bin\Debug\websockets.dll" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib lib\Debug\ZLIB.lib "C:\OpenSSL-Win32\lib\VC\ssleay32MDd.lib" "C:\OpenSSL-Win32\lib\VC\libeay32MDd.lib" ws2_32.lib /MANIFEST /ManifestFile:"websockets_shared.dir\Debug\websockets.dll.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:/Users/Andrea/Desktop/myProj/secure-rfid-login/app/libwebsockets-master/build/bin/Debug/websockets.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/Andrea/Desktop/myProj/secure-rfid-login/app/libwebsockets-master/build/lib/Debug/websockets.lib" /MACHINE:X86 /DLL websockets_shared.dir\Debug\websockets.dll.embed.manifest.res
+         "websockets_shared.dir\Debug\base64-decode.obj"
+         websockets_shared.dir\Debug\handshake.obj
+         websockets_shared.dir\Debug\libwebsockets.obj
+         websockets_shared.dir\Debug\output.obj
+         websockets_shared.dir\Debug\parsers.obj
+         "websockets_shared.dir\Debug\sha-1.obj"
+         websockets_shared.dir\Debug\server.obj
+         "websockets_shared.dir\Debug\server-handshake.obj"
+         websockets_shared.dir\Debug\extension.obj
+         "websockets_shared.dir\Debug\extension-deflate-frame.obj"
+         "websockets_shared.dir\Debug\extension-deflate-stream.obj"
+         "websockets_shared.dir\Debug\websock-w32.obj"
+         websockets_shared.dir\Debug\gettimeofday.obj  /machine:X86 /debug 
+            Creazione della libreria C:/Users/Andrea/Desktop/myProj/secure-rfid-login/app/libwebsockets-master/build/lib/Debug/websockets.lib e dell'oggetto C:/Users/Andrea/Desktop/myProj/secure-rfid-login/app/libwebsockets-master/build/lib/Debug/websockets.exp in corso...
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"websockets_shared.dir\Debug\websockets.dll.embed.manifest" /manifest websockets_shared.dir\Debug\websockets.dll.intermediate.manifest
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"websockets_shared.dir\Debug\websockets.dll.embed.manifest.res" websockets_shared.dir\Debug\websockets_manifest.rc 
+       LinkEmbedManifest:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\build\bin\Debug\websockets.dll" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib lib\Debug\ZLIB.lib "C:\OpenSSL-Win32\lib\VC\ssleay32MDd.lib" "C:\OpenSSL-Win32\lib\VC\libeay32MDd.lib" ws2_32.lib /MANIFEST /ManifestFile:"websockets_shared.dir\Debug\websockets.dll.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:/Users/Andrea/Desktop/myProj/secure-rfid-login/app/libwebsockets-master/build/bin/Debug/websockets.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/Andrea/Desktop/myProj/secure-rfid-login/app/libwebsockets-master/build/lib/Debug/websockets.lib" /MACHINE:X86 /DLL websockets_shared.dir\Debug\websockets.dll.embed.manifest.res
+         "websockets_shared.dir\Debug\base64-decode.obj"
+         websockets_shared.dir\Debug\handshake.obj
+         websockets_shared.dir\Debug\libwebsockets.obj
+         websockets_shared.dir\Debug\output.obj
+         websockets_shared.dir\Debug\parsers.obj
+         "websockets_shared.dir\Debug\sha-1.obj"
+         websockets_shared.dir\Debug\server.obj
+         "websockets_shared.dir\Debug\server-handshake.obj"
+         websockets_shared.dir\Debug\extension.obj
+         "websockets_shared.dir\Debug\extension-deflate-frame.obj"
+         "websockets_shared.dir\Debug\extension-deflate-stream.obj"
+         "websockets_shared.dir\Debug\websock-w32.obj"
+         websockets_shared.dir\Debug\gettimeofday.obj  /machine:X86 /debug 
+            Creazione della libreria C:/Users/Andrea/Desktop/myProj/secure-rfid-login/app/libwebsockets-master/build/lib/Debug/websockets.lib e dell'oggetto C:/Users/Andrea/Desktop/myProj/secure-rfid-login/app/libwebsockets-master/build/lib/Debug/websockets.exp in corso...
+         websockets_shared.vcxproj -> C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\build\bin\Debug\websockets.dll
+       FinalizeBuildStatus:
+         Eliminazione del file "websockets_shared.dir\Debug\websockets_shared.unsuccessfulbuild" in corso.
+         Aggiornamento timestamp di "websockets_shared.dir\Debug\websockets_shared.lastbuildstate".
+     1>Compilazione progetto "C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\build\websockets_shared.vcxproj" (destinazioni: build) completata.
 
 Compilazione completata.
 
-Tempo trascorso 00:00:00.20
+Tempo trascorso 00:00:14.14

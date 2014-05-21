@@ -3,22 +3,22 @@
 #include <MFRC522.h>
 
 /*--------------------------------------------------------------------------------------
- * Pin layout should be as follows:
- * Signal     Pin              Pin               Pin
- *            Arduino Uno      Arduino Mega      MFRC522 board
- * ------------------------------------------------------------
- * Reset      9                5                 RST
- * SPI SS     10               53                SDA
- * SPI MOSI   11               52                MOSI
- * SPI MISO   12               51                MISO
- * SPI SCK    13               50                SCK
- *
- * The reader can be found on eBay for around 5 dollars. Search for "mf-rc522" on ebay.com. 
- */
+* Pin layout should be as follows:
+* Signal Pin Pin Pin
+* Arduino Uno Arduino Mega MFRC522 board
+* ------------------------------------------------------------
+* Reset 9 5 RST
+* SPI SS 10 53 SDA
+* SPI MOSI 11 52 MOSI
+* SPI MISO 12 51 MISO
+* SPI SCK 13 50 SCK
+*
+* The reader can be found on eBay for around 5 dollars. Search for "mf-rc522" on ebay.com.
+*/
 
 #define BAUD_RATE 115200
 #define LED 6
-#define SPEAKER_PIN 3
+#define SPEAKER_PIN 8
 #define TONE_1 440
 #define TONE_2 415
 #define KEY_LENGHT 6
@@ -79,7 +79,7 @@ void loop()
        {
          if(Serial.read() == init_msg[i])
            num++;
-       }          
+       }
        
        if(num==5)
        {
@@ -93,15 +93,15 @@ void loop()
        }
     }
    
-   empty_serial();    
+   empty_serial();
   }
   else
   {
     if(block_ready == 0)
-    {      
+    {
       //Attendi un messaggio
       while(Serial.available() > 0)
-      {        
+      {
         
         switch(num_of_block)
         {
@@ -112,7 +112,7 @@ void loop()
             cognome[num_of_byte] = Serial.read();
             break;
           case 2:
-            user[num_of_byte] = Serial.read(); 
+            user[num_of_byte] = Serial.read();
             break;
           case 3:
             psw[num_of_byte] = Serial.read();
@@ -125,13 +125,13 @@ void loop()
           
           check_and_fill();
    
-          empty_serial();     
+          empty_serial();
           
         }
         else
-          num_of_byte++; 
+          num_of_byte++;
         
-        //Serial.print(nome[num_of_byte],HEX);      
+        //Serial.print(nome[num_of_byte],HEX);
       }
     }
     else
@@ -143,12 +143,12 @@ void loop()
       if(select_card(&mfrc522) == -1)
         return;
         
-        /*tone(speakerPin, tones[8]);
-        delay(500);
-        noTone(speakerPin);*/
+        tone(SPEAKER_PIN, TONE_2);
+        delay(200);
+        noTone(SPEAKER_PIN);
         
-	// Dump debug info about the card. PICC_HaltA() is automatically called.
-	//mfrc522.PICC_DumpToSerial(&(mfrc522.uid));
+// Dump debug info about the card. PICC_HaltA() is automatically called.
+//mfrc522.PICC_DumpToSerial(&(mfrc522.uid));
 
         Serial.print("Card found! ");
         
@@ -179,14 +179,14 @@ void check_and_fill()
     case 0:
         if(nome[num_of_byte] == (num_of_block + 0x30))
           {
-            num_of_byte = 0;            
+            num_of_byte = 0;
             num_of_block++;
             
             tone(SPEAKER_PIN, TONE_1);
             delay(200);
             noTone(SPEAKER_PIN);
             
-            //empty_serial();   
+            //empty_serial();
             
             Serial.print("Message ready!\n");
           }
@@ -196,21 +196,21 @@ void check_and_fill()
             connection_done = 0;
             num_of_byte = 0;
             
-            //empty_serial();   
+            //empty_serial();
           }
     break;
     
     case 1:
         if(cognome[num_of_byte] == (num_of_block + 0x30))
           {
-            num_of_byte = 0;            
+            num_of_byte = 0;
             num_of_block++;
             
             tone(SPEAKER_PIN, TONE_1);
             delay(200);
             noTone(SPEAKER_PIN);
             
-            //empty_serial();   
+            //empty_serial();
             
             Serial.print("Message ready!\n");
           }
@@ -220,21 +220,21 @@ void check_and_fill()
             connection_done = 0;
             num_of_byte = 0;
             
-            //empty_serial();   
+            //empty_serial();
           }
     break;
     
     case 2:
         if(user[num_of_byte] == (num_of_block + 0x30))
           {
-            num_of_byte = 0;              
+            num_of_byte = 0;
             num_of_block++;
             
             tone(SPEAKER_PIN, TONE_1);
             delay(200);
             noTone(SPEAKER_PIN);
             
-            //empty_serial();   
+            //empty_serial();
             
             Serial.print("Message ready!\n");
 
@@ -245,7 +245,7 @@ void check_and_fill()
             connection_done = 0;
             num_of_byte = 0;
             
-            //empty_serial();   
+            //empty_serial();
           }
     break;
     
@@ -274,48 +274,40 @@ void check_and_fill()
             connection_done = 0;
             num_of_byte = 0;
             
-            //empty_serial();   
+            //empty_serial();
           }
     break;
     
   }
   /*if(nome[num_of_byte] == (num_of_block + 0x30))
-          {
-            num_of_byte = 0;
-            
-            if(num_of_block == 3)
-            {
-              //Serial.print("Blocks ready!\n");
-              
-              tone(speakerPin, tones[9]);
-              delay(1000);
-              noTone(speakerPin);
-              
-              block_ready = true;
-              num_of_byte = 0;
-              num_of_block = 0;
-              
-              break;
-            }              
-            num_of_block++;
-            
-            /*tone(speakerPin, tones[9]);
-            delay(500);
-            noTone(speakerPin);
-            
-            empty_serial();   
-            
-            //Serial.print("Message ready!\n");
-            break;
-          }
-          else
-          {
-            Serial.print("ERROR! Invalid message!\n");
-            connection_done = false;
-            num_of_byte = 0;
-            
-            empty_serial();   
-          }  */
+{
+num_of_byte = 0;
+if(num_of_block == 3)
+{
+//Serial.print("Blocks ready!\n");
+tone(speakerPin, tones[9]);
+delay(1000);
+noTone(speakerPin);
+block_ready = true;
+num_of_byte = 0;
+num_of_block = 0;
+break;
+}
+num_of_block++;
+/*tone(speakerPin, tones[9]);
+delay(500);
+noTone(speakerPin);
+empty_serial();
+//Serial.print("Message ready!\n");
+break;
+}
+else
+{
+Serial.print("ERROR! Invalid message!\n");
+connection_done = false;
+num_of_byte = 0;
+empty_serial();
+} */
 }
 
 void empty_serial()
@@ -323,6 +315,3 @@ void empty_serial()
   while(Serial.available() > 0)
     Serial.read();
 }
-
-
-

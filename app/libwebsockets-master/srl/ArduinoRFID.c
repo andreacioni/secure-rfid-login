@@ -1,4 +1,5 @@
 #include<time.h>
+#include<windows.h>
 
 #include "ArduinoRFID.h"
 #include "rs232.h"
@@ -14,21 +15,24 @@ int check_message(unsigned char *buffer,int lenght,unsigned char ack_byte);
 
 int wait_for_device()
 {
-	int port_number = 8,received = 0;
+	int port_number = 0,received = 0;
 	char *INIT = "INIT\n";
 	char OK[4];
 	char uid[4];
+
+	BOOL port_discovered = FALSE;
 
 	//char buffer[278 + 1];
 	
 	printf("[SERIAL]: ");
 	printf("Searching device...");
 
-	while(port_number < 16)
+	while(port_discovered == FALSE)
 	{
 		if(RS232_OpenComport(port_number,BAUD_RATE))
 		{
-			//printf("non posso aprire la porta COM%i\n",port_number+1);
+			printf("non posso aprire la porta COM%i\n",port_number+1);
+			port_number++;
 		}
 		else
 		{
@@ -40,6 +44,10 @@ int wait_for_device()
 			{
 				printf("[SERIAL]: ");
 				printf("send error: COM%i\n",port_number+1);
+
+				RS232_CloseComport(port_number);
+				printf("[SERIAL]: ");
+				printf("port closed!\n");
 			}
 			else
 			{
@@ -61,7 +69,8 @@ int wait_for_device()
 						printf("Device discovered!\n"); // lettore riconosciuto!
 
 						Sleep(500);
-						return port_number;
+
+						port_discovered = TRUE;
 						/*unsigned char ring_buff[4];
 						int offset = 0;
 						while(1)
@@ -92,6 +101,11 @@ int wait_for_device()
 					{
 						printf("[SERIAL]: ");
 						printf("messaggio non valido\n");
+
+						port_number++;
+						RS232_CloseComport(port_number);
+						printf("[SERIAL]: ");
+						printf("port closed!\n");
 					}
 					
 				}
@@ -99,22 +113,24 @@ int wait_for_device()
 				{
 					printf("[SERIAL]: ");
 					printf("non e' arrivato niente!\n");
+
+					port_number++;
+					RS232_CloseComport(port_number);
+					printf("[SERIAL]: ");
+					printf("port closed!\n");
 				}			
 				
 				
 			}
 
-			port_number++;
-			RS232_CloseComport(port_number);
-			printf("[SERIAL]: ");
-			printf("port closed!\n");
-
 		}
 
-		Sleep(1000);
+		if(port_number == 16)
+			port_number = 0;
+		Sleep(100);
 	}
 
-	return -1;
+	return port_number;
 }
 
 void send_keep_alive(int port)
