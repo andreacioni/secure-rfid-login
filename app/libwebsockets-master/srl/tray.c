@@ -215,7 +215,7 @@ BOOL ShowPopupMenu( HWND hWnd, POINT *curpos, int wDefaultItem ) {
 
 DWORD WINAPI server_thread( LPVOID lpParam )
 {
-	startServerSocket(&nData);
+	start_server_socket(&nData);
 }
 
 DWORD WINAPI serial_thread( LPVOID lpParam )

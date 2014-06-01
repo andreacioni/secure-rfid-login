@@ -735,7 +735,7 @@ static struct option options[] = {
 	{ NULL, 0, 0, 0 }
 };
 
-int startServerSocket(NOTIFYICONDATA *notify)
+int start_server_socket(NOTIFYICONDATA *notify)
 {
 	char cert_path[1024];
 	char key_path[1024];

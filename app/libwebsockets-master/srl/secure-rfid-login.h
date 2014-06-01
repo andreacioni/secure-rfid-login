@@ -1,1 +1,1 @@
-int startServerSocket(NOTIFYICONDATA *notify);
+int start_server_socket(NOTIFYICONDATA *notify);
