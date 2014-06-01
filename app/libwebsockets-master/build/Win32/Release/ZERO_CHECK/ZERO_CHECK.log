@@ -1,0 +1,15 @@
+﻿Compilazione avviata 29/05/2014 21:57:26.
+     1>Progetto "C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\build\ZERO_CHECK.vcxproj" sul nodo 2 (destinazioni: build).
+     1>InitializeBuildStatus:
+         Creazione di "Win32\Release\ZERO_CHECK\ZERO_CHECK.unsuccessfulbuild". È stato specificato "AlwaysCreate".
+       CustomBuild:
+         Checking Build System
+         CMake does not need to re-run because C:/Users/Andrea/Desktop/myProj/secure-rfid-login/app/libwebsockets-master/build/CMakeFiles/generate.stamp is up-to-date.
+       FinalizeBuildStatus:
+         Eliminazione del file "Win32\Release\ZERO_CHECK\ZERO_CHECK.unsuccessfulbuild" in corso.
+         Aggiornamento timestamp di "Win32\Release\ZERO_CHECK\ZERO_CHECK.lastbuildstate".
+     1>Compilazione progetto "C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\build\ZERO_CHECK.vcxproj" (destinazioni: build) completata.
+
+Compilazione completata.
+
+Tempo trascorso 00:00:00.41

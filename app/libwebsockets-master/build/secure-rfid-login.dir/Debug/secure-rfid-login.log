@@ -1,19 +1,27 @@
-﻿Compilazione avviata 21/05/2014 21:58:46.
+﻿Compilazione avviata 01/06/2014 16:37:59.
      1>Progetto "C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\build\secure-rfid-login.vcxproj" sul nodo 2 (destinazioni: build).
      1>InitializeBuildStatus:
-         Aggiornamento timestamp di "secure-rfid-login.dir\Debug\secure-rfid-login.unsuccessfulbuild".
+         Creazione di "secure-rfid-login.dir\Debug\secure-rfid-login.unsuccessfulbuild". È stato specificato "AlwaysCreate".
        CustomBuild:
          Tutti gli output sono aggiornati.
          Building Custom Rule C:/Users/Andrea/Desktop/myProj/secure-rfid-login/app/libwebsockets-master/CMakeLists.txt
          CMake does not need to re-run because C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\build\CMakeFiles\generate.stamp is up-to-date.
        ClCompile:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I"C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\build" /I"C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\lib" /I"C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\win32port\win32helpers" /I"C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\win32port\zlib" /I"C:\OpenSSL-Win32\include" /Zi /nologo /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D "INSTALL_DATADIR=\"C:/Program Files (x86)/libwebsockets/share\"" /D CMAKE_BUILD /D _CRT_SECURE_NO_DEPRECATE /D _CRT_NONSTDC_NO_DEPRECATE /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"secure-rfid-login.dir\Debug\\" /Fd"secure-rfid-login.dir\Debug\vc100.pdb" /Gd /TC /analyze- /errorReport:prompt ..\srl\ArgoRFID_Reader.c ..\srl\EncDec.c
+         ArgoRFID_Reader.c
+         EncDec.c
+         Generazione del codice in corso...
+       ResourceCompile:
          Tutti gli output sono aggiornati.
        ManifestResourceCompile:
          Tutti gli output sono aggiornati.
        Link:
-         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\build\bin\Debug\libwebsockets-secure-rfid-login.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib lib\Debug\websockets_static.lib lib\Debug\ZLIB.lib "C:\OpenSSL-Win32\lib\VC\ssleay32MDd.lib" "C:\OpenSSL-Win32\lib\VC\libeay32MDd.lib" ws2_32.lib /MANIFEST /ManifestFile:"secure-rfid-login.dir\Debug\libwebsockets-secure-rfid-login.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:/Users/Andrea/Desktop/myProj/secure-rfid-login/app/libwebsockets-master/build/bin/Debug/libwebsockets-secure-rfid-login.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/Andrea/Desktop/myProj/secure-rfid-login/app/libwebsockets-master/build/lib/Debug/libwebsockets-secure-rfid-login.lib" /MACHINE:X86 "secure-rfid-login.dir\Debug\libwebsockets-secure-rfid-login.exe.embed.manifest.res"
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\build\bin\Debug\libwebsockets-secure-rfid-login.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib lib\Debug\websockets_static.lib lib\Debug\ZLIB.lib "C:\OpenSSL-Win32\lib\VC\ssleay32MDd.lib" "C:\OpenSSL-Win32\lib\VC\libeay32MDd.lib" ws2_32.lib /MANIFEST /ManifestFile:"secure-rfid-login.dir\Debug\libwebsockets-secure-rfid-login.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:/Users/Andrea/Desktop/myProj/secure-rfid-login/app/libwebsockets-master/build/bin/Debug/libwebsockets-secure-rfid-login.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/Andrea/Desktop/myProj/secure-rfid-login/app/libwebsockets-master/build/lib/Debug/libwebsockets-secure-rfid-login.lib" /MACHINE:X86 "secure-rfid-login.dir\Debug\resources.res"
+         "secure-rfid-login.dir\Debug\libwebsockets-secure-rfid-login.exe.embed.manifest.res"
+         "secure-rfid-login.dir\Debug\aes.obj"
          "secure-rfid-login.dir\Debug\ArduinoRFID.obj"
          "secure-rfid-login.dir\Debug\ArgoRFID_Reader.obj"
+         "secure-rfid-login.dir\Debug\EncDec.obj"
          "secure-rfid-login.dir\Debug\rs232.obj"
          "secure-rfid-login.dir\Debug\secure-rfid-login.obj"
          "secure-rfid-login.dir\Debug\tray.obj"
@@ -53,4 +61,4 @@
 
 Compilazione completata.
 
-Tempo trascorso 00:00:01.95
+Tempo trascorso 00:00:14.70

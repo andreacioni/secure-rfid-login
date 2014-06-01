@@ -7,11 +7,13 @@
 #include "secure-rfid-login.h"
 #include "ArgoRFID_Reader.h"
 
+#include "resource.h"
+
 #define ID_ABOUT       2000
 #define ID_EXIT        2001
 #define ID_NOTIFY	   2002
 
-void startTray(HWND window);
+void startTray(HINSTANCE, HWND window);
 LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
 BOOL ShowPopupMenu( HWND hWnd, POINT *curpos, int wDefaultItem );
 void closeTray(HWND window);
@@ -41,10 +43,6 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
               ShowPopupMenu(hwnd, NULL, -1 );
               PostMessage( hwnd, WM_APP + 1, 0, 0 );
 			  return 0;
-			  
-			case NIN_BALLOONUSERCLICK:
-				 MessageBox( hwnd, TEXT("OK! "), TEXT("Title over baloon event"), MB_ICONINFORMATION | MB_OK );
-              return 0;
           }
 		  return 0;
 		  case WM_COMMAND:
@@ -78,7 +76,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
     return DefWindowProc( hwnd, msg, wParam, lParam );;
 }
 
-int main(HINSTANCE hInstance, HINSTANCE hPrevInstance,
+int WINAPI WinMain (HINSTANCE hInstance, HINSTANCE hPrevInstance,
     LPSTR lpCmdLine, int nCmdShow)
 {
 	HANDLE sever_Thread,serial_Thread;
@@ -95,7 +93,7 @@ int main(HINSTANCE hInstance, HINSTANCE hPrevInstance,
     wc.cbClsExtra    = 0;
     wc.cbWndExtra    = 0;
     wc.hInstance     = hInstance;
-    wc.hIcon         = LoadIcon(NULL, IDI_APPLICATION);
+	wc.hIcon         = LoadIcon(NULL, IDI_APPLICATION);
     wc.hCursor       = LoadCursor(NULL, IDC_ARROW);
     wc.hbrBackground = (HBRUSH)(COLOR_WINDOW+1);
     wc.lpszMenuName  = NULL;
@@ -127,7 +125,7 @@ int main(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
    //ShowWindow(hwnd, nCmdShow);
    UpdateWindow(hwnd);
-	startTray(hwnd);
+   startTray(hInstance,hwnd);
 	
 	sever_Thread = CreateThread(NULL,0,server_thread,NULL,0,NULL);
 	serial_Thread = CreateThread(NULL,0,serial_thread,NULL,0,NULL);
@@ -145,8 +143,9 @@ int main(HINSTANCE hInstance, HINSTANCE hPrevInstance,
     return Msg.wParam;
 }
 
-void startTray(HWND window)
+void startTray(HINSTANCE hInstance,HWND window)
 {
+	char tip[128] = "Secure RFID Login: Argo";
 	ZeroMemory(&nData,sizeof(nData));
 	
 	nData.cbSize = sizeof(nData);
@@ -154,9 +153,8 @@ void startTray(HWND window)
     nData.uID    = 100;
     nData.uFlags = NIF_ICON | NIF_MESSAGE | NIF_TIP;
 	nData.uCallbackMessage = WM_APP;
-	//nData.szTip = "My Program\n";
-    //u could load ur own icon here
-    nData.hIcon  = LoadIcon(NULL, IDI_APPLICATION);
+	strcpy(nData.szTip,tip);
+    nData.hIcon  = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_MAIN_ICON));
 	
 	Shell_NotifyIcon(NIM_ADD,&nData);
 }
@@ -171,6 +169,7 @@ void sendNotification()
 	strcpy(nData.szInfo, "Description here!");
 	strcpy(nData.szInfoTitle, "I'm the Title!");
 	nData.dwInfoFlags = NIIF_INFO;
+	nData.uTimeout = 10000;
 
 	Shell_NotifyIcon(NIM_MODIFY,&nData);
 

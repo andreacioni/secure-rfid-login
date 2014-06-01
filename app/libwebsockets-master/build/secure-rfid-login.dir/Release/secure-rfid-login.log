@@ -1,0 +1,55 @@
+﻿Compilazione avviata 30/05/2014 22:29:25.
+     1>Progetto "C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\build\secure-rfid-login.vcxproj" sul nodo 2 (destinazioni: build).
+     1>InitializeBuildStatus:
+         Aggiornamento timestamp di "secure-rfid-login.dir\Release\secure-rfid-login.unsuccessfulbuild".
+       CustomBuild:
+         Tutti gli output sono aggiornati.
+         Building Custom Rule C:/Users/Andrea/Desktop/myProj/secure-rfid-login/app/libwebsockets-master/CMakeLists.txt
+         CMake does not need to re-run because C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\build\CMakeFiles\generate.stamp is up-to-date.
+       ClCompile:
+         Tutti gli output sono aggiornati.
+       ResourceCompile:
+         Tutti gli output sono aggiornati.
+       Link:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\build\bin\Release\libwebsockets-secure-rfid-login.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib lib\Release\websockets_static.lib lib\Release\ZLIB.lib "C:\OpenSSL-Win32\lib\VC\ssleay32MD.lib" "C:\OpenSSL-Win32\lib\VC\libeay32MD.lib" ws2_32.lib /MANIFEST /ManifestFile:"secure-rfid-login.dir\Release\libwebsockets-secure-rfid-login.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /PDB:"C:/Users/Andrea/Desktop/myProj/secure-rfid-login/app/libwebsockets-master/build/bin/Release/libwebsockets-secure-rfid-login.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/Andrea/Desktop/myProj/secure-rfid-login/app/libwebsockets-master/build/lib/Release/libwebsockets-secure-rfid-login.lib" /MACHINE:X86 "secure-rfid-login.dir\Release\resources.res"
+         "secure-rfid-login.dir\Release\aes.obj"
+         "secure-rfid-login.dir\Release\ArduinoRFID.obj"
+         "secure-rfid-login.dir\Release\ArgoRFID_Reader.obj"
+         "secure-rfid-login.dir\Release\EncDec.obj"
+         "secure-rfid-login.dir\Release\rs232.obj"
+         "secure-rfid-login.dir\Release\secure-rfid-login.obj"
+         "secure-rfid-login.dir\Release\tray.obj"
+         "secure-rfid-login.dir\Release\getopt.obj"
+         "secure-rfid-login.dir\Release\getopt_long.obj"
+         "secure-rfid-login.dir\Release\gettimeofday.obj"  /machine:X86 
+         secure-rfid-login.vcxproj -> C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\build\bin\Release\libwebsockets-secure-rfid-login.exe
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\build\bin\Release\libwebsockets-secure-rfid-login.exe;#1" /manifest "secure-rfid-login.dir\Release\libwebsockets-secure-rfid-login.exe.intermediate.manifest"
+       PostBuildEvent:
+         setlocal
+         C:\Users\Andrea\Desktop\cmake-2.8.12.2-win32-x86\bin\cmake.exe -E copy C:/OpenSSL-Win32/bin/libeay32.dll C:/Users/Andrea/Desktop/myProj/secure-rfid-login/app/libwebsockets-master/build/bin/Release
+         if %errorlevel% neq 0 goto :cmEnd
+         :cmEnd
+         endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+         :cmErrorLevel
+         exit /b %1
+         :cmDone
+         if %errorlevel% neq 0 goto :VCEnd
+         setlocal
+         C:\Users\Andrea\Desktop\cmake-2.8.12.2-win32-x86\bin\cmake.exe -E copy C:/OpenSSL-Win32/bin/ssleay32.dll C:/Users/Andrea/Desktop/myProj/secure-rfid-login/app/libwebsockets-master/build/bin/Release
+         if %errorlevel% neq 0 goto :cmEnd
+         :cmEnd
+         endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+         :cmErrorLevel
+         exit /b %1
+         :cmDone
+         if %errorlevel% neq 0 goto :VCEnd
+         :VCEnd
+       FinalizeBuildStatus:
+         Eliminazione del file "secure-rfid-login.dir\Release\secure-rfid-login.unsuccessfulbuild" in corso.
+         Aggiornamento timestamp di "secure-rfid-login.dir\Release\secure-rfid-login.lastbuildstate".
+     1>Compilazione progetto "C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\build\secure-rfid-login.vcxproj" (destinazioni: build) completata.
+
+Compilazione completata.
+
+Tempo trascorso 00:00:01.79

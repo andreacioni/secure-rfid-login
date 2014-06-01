@@ -1,4 +1,4 @@
-﻿Compilazione avviata 21/05/2014 14:29:59.
+﻿Compilazione avviata 27/05/2014 21:15:10.
      1>Progetto "C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\build\websockets_shared.vcxproj" sul nodo 3 (destinazioni: build).
      1>InitializeBuildStatus:
          Creazione di "websockets_shared.dir\Debug\websockets_shared.unsuccessfulbuild". È stato specificato "AlwaysCreate".
@@ -75,4 +75,4 @@
 
 Compilazione completata.
 
-Tempo trascorso 00:00:14.14
+Tempo trascorso 00:00:15.49

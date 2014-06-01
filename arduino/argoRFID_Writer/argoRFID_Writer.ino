@@ -164,6 +164,8 @@ void loop()
         write_blocks(&mfrc522,&key,BLOCK_PASS,psw);
         
         stop_write(&mfrc522);
+        
+        block_ready = 0;
     }
   }
    

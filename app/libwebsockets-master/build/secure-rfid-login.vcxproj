@@ -137,7 +137,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ImportLibrary>C:/Users/Andrea/Desktop/myProj/secure-rfid-login/app/libwebsockets-master/build/lib/Debug/libwebsockets-secure-rfid-login.lib</ImportLibrary>
       <ProgramDataBaseFile>C:/Users/Andrea/Desktop/myProj/secure-rfid-login/app/libwebsockets-master/build/bin/Debug/libwebsockets-secure-rfid-login.pdb</ProgramDataBaseFile>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <Version>
       </Version>
     </Link>
@@ -203,7 +203,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <ImportLibrary>C:/Users/Andrea/Desktop/myProj/secure-rfid-login/app/libwebsockets-master/build/lib/Release/libwebsockets-secure-rfid-login.lib</ImportLibrary>
       <ProgramDataBaseFile>C:/Users/Andrea/Desktop/myProj/secure-rfid-login/app/libwebsockets-master/build/bin/Release/libwebsockets-secure-rfid-login.pdb</ProgramDataBaseFile>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <Version>
       </Version>
     </Link>
@@ -395,8 +395,11 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\srl\aes.h" />
     <ClInclude Include="..\srl\ArduinoRFID.h" />
     <ClInclude Include="..\srl\ArgoRFID_Reader.h" />
+    <ClInclude Include="..\srl\crypt.h" />
+    <ClInclude Include="..\srl\EncDec.h" />
     <ClInclude Include="..\srl\rs232.h" />
     <ClInclude Include="..\srl\secure-rfid-login.h" />
     <ClInclude Include="..\win32port\win32helpers\getopt.h" />
@@ -405,8 +408,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="..\win32port\win32helpers\strings.h" />
     <ClInclude Include="..\win32port\win32helpers\unistd.h" />
     <ClInclude Include="..\win32port\win32helpers\websock-w32.h" />
+    <ClCompile Include="..\srl\aes.c" />
     <ClCompile Include="..\srl\ArduinoRFID.c" />
     <ClCompile Include="..\srl\ArgoRFID_Reader.c" />
+    <ClCompile Include="..\srl\EncDec.c" />
     <ClCompile Include="..\srl\rs232.c" />
     <ClCompile Include="..\srl\secure-rfid-login.c" />
     <ClCompile Include="..\srl\tray.c" />
@@ -421,6 +426,12 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ProjectReference Include="C:/Users/Andrea/Desktop/myProj/secure-rfid-login/app/libwebsockets-master/build/websockets.vcxproj">
       <Project>0DDF789A-1E92-4BCB-8667-9280CD9D8153</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\srl\icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\srl\resources.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

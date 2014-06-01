@@ -1,4 +1,4 @@
-﻿Compilazione avviata 21/05/2014 14:29:55.
+﻿Compilazione avviata 27/05/2014 21:15:04.
      1>Progetto "C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\build\ZLIB.vcxproj" sul nodo 2 (destinazioni: build).
      1>InitializeBuildStatus:
          Creazione di "ZLIB.dir\Debug\ZLIB.unsuccessfulbuild". È stato specificato "AlwaysCreate".
@@ -71,4 +71,4 @@
 
 Compilazione completata.
 
-Tempo trascorso 00:00:02.86
+Tempo trascorso 00:00:05.99

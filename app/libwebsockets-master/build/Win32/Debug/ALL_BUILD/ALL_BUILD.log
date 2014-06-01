@@ -1,5 +1,5 @@
-﻿Compilazione avviata 21/05/2014 14:30:13.
-     1>Progetto "C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\build\ALL_BUILD.vcxproj" sul nodo 4 (destinazioni: build).
+﻿Compilazione avviata 27/05/2014 21:15:32.
+     1>Progetto "C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\build\ALL_BUILD.vcxproj" sul nodo 3 (destinazioni: build).
      1>InitializeBuildStatus:
          Creazione di "Win32\Debug\ALL_BUILD\ALL_BUILD.unsuccessfulbuild". È stato specificato "AlwaysCreate".
        CustomBuild:
@@ -13,4 +13,4 @@
 
 Compilazione completata.
 
-Tempo trascorso 00:00:00.47
+Tempo trascorso 00:00:00.42

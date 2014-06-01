@@ -1,6 +1,8 @@
 #include<stdio.h>
 #include<windows.h>
+
 #include "ArduinoRFID.h"
+#include "EncDec.h"
 
 #define TIMEOUT 10 //Number of seconds to wait a message after SS flag was captured
 
@@ -15,6 +17,7 @@ void start(char * cmd);
 int start_rfid_reader(NOTIFYICONDATA *notify)
 {
 	int port = wait_for_device();
+	unsigned char enc_username[MAX_MESSAGE_LENGHT] = {0x00},enc_password[MAX_MESSAGE_LENGHT] = {0x00};
 
 	nData = notify;
 
@@ -41,16 +44,19 @@ int start_rfid_reader(NOTIFYICONDATA *notify)
 				//Set the data into the correct array
 				memcpy(name,&buff[(MAX_MESSAGE_LENGHT+1)*0],MAX_MESSAGE_LENGHT);
 				memcpy(surname,&buff[(MAX_MESSAGE_LENGHT+1)*1],MAX_MESSAGE_LENGHT);
-				memcpy(username,&buff[(MAX_MESSAGE_LENGHT+1)*2],MAX_MESSAGE_LENGHT);
-				memcpy(password,&buff[(MAX_MESSAGE_LENGHT+1)*3],MAX_MESSAGE_LENGHT);
+				memcpy(enc_username,&buff[(MAX_MESSAGE_LENGHT+1)*2],MAX_MESSAGE_LENGHT);
+				memcpy(enc_password,&buff[(MAX_MESSAGE_LENGHT+1)*3],MAX_MESSAGE_LENGHT);
 				
 				//Data are ready and correctly sent
 				is_data_present = TRUE;
 
+				//Decrypt data
+				decrypt_data(enc_username,enc_password,username,password);
+
 				//Send notification
 				sendInfoNotification();
 
-				start("firefox https://www.portaleargo.it/argoweb/scuolanext/common/login_form.jsp#");
+				start("START firefox http://gobettivolta.gov.it/component/banners/click/11");
 			}
 			else
 			{	
@@ -171,7 +177,7 @@ int get_password(char* buff)
 
 void start(char * cmd)
 {
-	system("START firefox http://gobettivolta.gov.it/");
+	system(cmd);
 }
 
 void clean_data()

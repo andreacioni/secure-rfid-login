@@ -25,6 +25,12 @@
     <ClCompile Include="..\srl\secure-rfid-login.c">
       <Filter>Sources</Filter>
     </ClCompile>
+    <ClCompile Include="..\srl\aes.c">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\srl\EncDec.c">
+      <Filter>Sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\win32port\win32helpers\getopt.h">
@@ -57,6 +63,15 @@
     <ClInclude Include="..\srl\ArgoRFID_Reader.h">
       <Filter>Headers Private</Filter>
     </ClInclude>
+    <ClInclude Include="..\srl\aes.h">
+      <Filter>Headers Private</Filter>
+    </ClInclude>
+    <ClInclude Include="..\srl\EncDec.h">
+      <Filter>Headers Private</Filter>
+    </ClInclude>
+    <ClInclude Include="..\srl\crypt.h">
+      <Filter>Headers Private</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="..\CMakeLists.txt" />
@@ -71,5 +86,11 @@
     <Filter Include="Sources">
       <UniqueIdentifier>{94E9F162-44B9-4F00-9E26-BB9896D7F208}</UniqueIdentifier>
     </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\srl\icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\srl\resources.rc" />
   </ItemGroup>
 </Project>
