@@ -39,6 +39,8 @@ if (window.WebSocket)
 	$(".footer").append("<table width='100%'><tr><td style='padding-right: 170px; padding-top: 10px' > <input id='secure_access' type='button' name='secure' value='Attendi...' class='button' /> </td></tr> <tr><td style='padding-top: 10px' > <p align=center><font size='2'>Se hai problemi con l'accesso sicuro visita <a href='http://www.andysite.altervista.org'>questa pagina...</a></font></p> </td></tr></table>");
 	
 	document.getElementById('secure_access').addEventListener('click', securedAuth, false);	
+	
+	document.getElementById('secure_access').value = "Connecting...";
 
 	
 	//Apri web socketz
