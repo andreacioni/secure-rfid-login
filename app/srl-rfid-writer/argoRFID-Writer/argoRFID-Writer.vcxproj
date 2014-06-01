@@ -70,6 +70,7 @@
   <ItemGroup>
     <ClInclude Include="aes.h" />
     <ClInclude Include="ArduinoRFID.h" />
+    <ClInclude Include="crypt.h" />
     <ClInclude Include="EncDec.h" />
     <ClInclude Include="rs232.h" />
   </ItemGroup>

@@ -44,5 +44,8 @@
     <ClInclude Include="EncDec.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
+    <ClInclude Include="crypt.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
