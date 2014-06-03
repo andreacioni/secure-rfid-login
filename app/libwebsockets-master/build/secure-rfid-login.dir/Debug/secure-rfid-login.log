@@ -1,4 +1,4 @@
-﻿Compilazione avviata 01/06/2014 16:37:59.
+﻿Compilazione avviata 03/06/2014 21:51:45.
      1>Progetto "C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\build\secure-rfid-login.vcxproj" sul nodo 2 (destinazioni: build).
      1>InitializeBuildStatus:
          Creazione di "secure-rfid-login.dir\Debug\secure-rfid-login.unsuccessfulbuild". È stato specificato "AlwaysCreate".
@@ -7,10 +7,8 @@
          Building Custom Rule C:/Users/Andrea/Desktop/myProj/secure-rfid-login/app/libwebsockets-master/CMakeLists.txt
          CMake does not need to re-run because C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\build\CMakeFiles\generate.stamp is up-to-date.
        ClCompile:
-         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I"C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\build" /I"C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\lib" /I"C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\win32port\win32helpers" /I"C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\win32port\zlib" /I"C:\OpenSSL-Win32\include" /Zi /nologo /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D "INSTALL_DATADIR=\"C:/Program Files (x86)/libwebsockets/share\"" /D CMAKE_BUILD /D _CRT_SECURE_NO_DEPRECATE /D _CRT_NONSTDC_NO_DEPRECATE /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"secure-rfid-login.dir\Debug\\" /Fd"secure-rfid-login.dir\Debug\vc100.pdb" /Gd /TC /analyze- /errorReport:prompt ..\srl\ArgoRFID_Reader.c ..\srl\EncDec.c
-         ArgoRFID_Reader.c
-         EncDec.c
-         Generazione del codice in corso...
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I"C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\build" /I"C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\lib" /I"C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\win32port\win32helpers" /I"C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\libwebsockets-master\win32port\zlib" /I"C:\OpenSSL-Win32\include" /Zi /nologo /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D "INSTALL_DATADIR=\"C:/Program Files (x86)/libwebsockets/share\"" /D CMAKE_BUILD /D _CRT_SECURE_NO_DEPRECATE /D _CRT_NONSTDC_NO_DEPRECATE /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"secure-rfid-login.dir\Debug\\" /Fd"secure-rfid-login.dir\Debug\vc100.pdb" /Gd /TC /analyze- /errorReport:prompt "..\srl\system-register.cpp"
+         system-register.cpp
        ResourceCompile:
          Tutti gli output sono aggiornati.
        ManifestResourceCompile:
@@ -24,6 +22,7 @@
          "secure-rfid-login.dir\Debug\EncDec.obj"
          "secure-rfid-login.dir\Debug\rs232.obj"
          "secure-rfid-login.dir\Debug\secure-rfid-login.obj"
+         "secure-rfid-login.dir\Debug\system-register.obj"
          "secure-rfid-login.dir\Debug\tray.obj"
          "secure-rfid-login.dir\Debug\getopt.obj"
          "secure-rfid-login.dir\Debug\getopt_long.obj"
@@ -61,4 +60,4 @@
 
 Compilazione completata.
 
-Tempo trascorso 00:00:14.70
+Tempo trascorso 00:00:02.58

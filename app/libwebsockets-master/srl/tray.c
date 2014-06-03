@@ -6,12 +6,14 @@
 
 #include "secure-rfid-login.h"
 #include "ArgoRFID_Reader.h"
+#include "system-register.h"
 
 #include "resource.h"
 
 #define ID_ABOUT       2000
 #define ID_EXIT        2001
 #define ID_NOTIFY	   2002
+#define ID_RESET       2003
 
 void startTray(HINSTANCE, HWND window);
 LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
@@ -29,6 +31,8 @@ DWORD WINAPI serial_thread( LPVOID lpParam );
 // Step 4: the Window Procedure
 LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
+	HANDLE serial_Thread;
+
     switch(msg)
     {
 		 case WM_APP:
@@ -58,9 +62,12 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
             case ID_EXIT:
               PostMessage( hwnd, WM_CLOSE, 0, 0 );
               return 0;
-			case ID_NOTIFY:
-				sendNotification();
-				return 0;
+			
+			case ID_RESET:
+			  close_rfid_reader();
+			  Sleep(100);
+			  serial_Thread = CreateThread(NULL,0,serial_thread,NULL,0,NULL);
+			  return 0;
           }
           return 0;
         case WM_CLOSE:
@@ -83,6 +90,8 @@ int WINAPI WinMain (HINSTANCE hInstance, HINSTANCE hPrevInstance,
     WNDCLASSEX wc;
     HWND hwnd;
     MSG Msg;
+
+	RegisterIfDoesntExist(L"Secure-RFID-Login: Argo");
 
 	ZeroMemory(&wc,sizeof(wc));
 
@@ -127,8 +136,8 @@ int WINAPI WinMain (HINSTANCE hInstance, HINSTANCE hPrevInstance,
    UpdateWindow(hwnd);
    startTray(hInstance,hwnd);
 	
-	sever_Thread = CreateThread(NULL,0,server_thread,NULL,0,NULL);
-	serial_Thread = CreateThread(NULL,0,serial_thread,NULL,0,NULL);
+   sever_Thread = CreateThread(NULL,0,server_thread,NULL,0,NULL);
+   serial_Thread = CreateThread(NULL,0,serial_thread,NULL,0,NULL);
 
 
     // Step 3: The Message Loop
@@ -184,6 +193,7 @@ BOOL ShowPopupMenu( HWND hWnd, POINT *curpos, int wDefaultItem ) {
       InsertMenu( hPop, 0, MF_BYPOSITION | MF_STRING, ID_ABOUT, "About..." );
       InsertMenu( hPop, 2, MF_BYPOSITION | MF_STRING, ID_EXIT , "Exit" );
 	  InsertMenu( hPop, 1, MF_BYPOSITION | MF_STRING, ID_NOTIFY , "Notify" );
+	  InsertMenu( hPop, 1, MF_BYPOSITION | MF_STRING, ID_RESET , "Reset" );
       
       //CAN DO WITHOUT STUFF.------------------------------------------------------------
       SetMenuDefaultItem( hPop, ID_ABOUT, FALSE );

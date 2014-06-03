@@ -14,14 +14,17 @@ BOOL is_data_present = FALSE;
 void sendInfoNotification();
 void start(char * cmd);
 
+int port = -1;
+
 int start_rfid_reader(NOTIFYICONDATA *notify)
 {
-	int port = wait_for_device();
+	
 	unsigned char enc_username[MAX_MESSAGE_LENGHT] = {0x00},enc_password[MAX_MESSAGE_LENGHT] = {0x00};
 
+	port = wait_for_device();
 	nData = notify;
 
-	while(1) //Ciclo continuo che manda/riceve il keep alive
+	while(port != -1) //Ciclo continuo che manda/riceve il keep alive
 	{
 		send_keep_alive(port);
 		if(receive_keep_alive(port) == SS_RECEIVED)
@@ -188,4 +191,8 @@ void clean_data()
 	memset(password,0x00,MAX_MESSAGE_LENGHT);
 }
 
-
+void close_rfid_reader()
+{
+	port = -1;
+	RS232_CloseComport(port);
+}

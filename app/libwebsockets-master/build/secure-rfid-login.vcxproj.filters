@@ -31,6 +31,9 @@
     <ClCompile Include="..\srl\EncDec.c">
       <Filter>Sources</Filter>
     </ClCompile>
+    <ClCompile Include="..\srl\system-register.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\win32port\win32helpers\getopt.h">
@@ -70,6 +73,9 @@
       <Filter>Headers Private</Filter>
     </ClInclude>
     <ClInclude Include="..\srl\crypt.h">
+      <Filter>Headers Private</Filter>
+    </ClInclude>
+    <ClInclude Include="..\srl\system-register.h">
       <Filter>Headers Private</Filter>
     </ClInclude>
   </ItemGroup>
