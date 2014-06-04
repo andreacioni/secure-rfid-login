@@ -37,7 +37,7 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -45,6 +45,7 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>libmysql.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -64,6 +65,7 @@
     <ClCompile Include="aes.c" />
     <ClCompile Include="ArduinoRFID.c" />
     <ClCompile Include="ArgoRFID-Writer.c" />
+    <ClCompile Include="DatabaseManager.c" />
     <ClCompile Include="EncDec.c" />
     <ClCompile Include="rs232.c" />
   </ItemGroup>
@@ -71,6 +73,7 @@
     <ClInclude Include="aes.h" />
     <ClInclude Include="ArduinoRFID.h" />
     <ClInclude Include="crypt.h" />
+    <ClInclude Include="DatabaseManager.h" />
     <ClInclude Include="EncDec.h" />
     <ClInclude Include="rs232.h" />
   </ItemGroup>
