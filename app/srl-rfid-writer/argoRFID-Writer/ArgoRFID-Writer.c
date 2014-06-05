@@ -6,6 +6,7 @@
 
 #include "ArduinoRFID.h"
 #include "EncDec.h"
+#include "DatabaseManager.h"
 
 #define MAX_LENGHT 64
 #define MAX_LENGHT_S "%s63"
@@ -20,6 +21,13 @@ int main()
 	int port;
 	int ret;
 	char select = 0x00;
+
+	unsigned char serial[] = { 0x32, 0x11, 0x11, 0xAA };
+	
+	if(is_serial_present(serial) == 0)
+		insert_serial(serial);
+
+	return 0;
 	
 	printf("Inserisci il tuo nome: ");
 	ret = scanf_s(MAX_LENGHT_S,&nome,MAX_LENGHT);		//Only 63 characters!
