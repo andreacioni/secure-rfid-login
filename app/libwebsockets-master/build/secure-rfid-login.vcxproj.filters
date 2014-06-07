@@ -31,7 +31,10 @@
     <ClCompile Include="..\srl\EncDec.c">
       <Filter>Sources</Filter>
     </ClCompile>
-    <ClCompile Include="..\srl\system-register.cpp">
+    <ClCompile Include="..\srl\system-register.c">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\srl\DatabaseManager.c">
       <Filter>Sources</Filter>
     </ClCompile>
   </ItemGroup>
@@ -76,6 +79,9 @@
       <Filter>Headers Private</Filter>
     </ClInclude>
     <ClInclude Include="..\srl\system-register.h">
+      <Filter>Headers Private</Filter>
+    </ClInclude>
+    <ClInclude Include="..\srl\DatabaseManager.h">
       <Filter>Headers Private</Filter>
     </ClInclude>
   </ItemGroup>

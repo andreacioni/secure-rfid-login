@@ -1,19 +1,9 @@
-﻿Compilazione avviata 05/06/2014 09:23:06.
+﻿Compilazione avviata 07/06/2014 14:55:27.
      1>Progetto "C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\srl-rfid-writer\argoRFID-Writer\argoRFID-Writer.vcxproj" sul nodo 2 (destinazioni: build).
      1>InitializeBuildStatus:
          Creazione di "Debug\srl-rfid-writer.unsuccessfulbuild". È stato specificato "AlwaysCreate".
        ClCompile:
-         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TC /analyze- /errorReport:prompt DatabaseManager.c
-         DatabaseManager.c
-     1>c:\users\andrea\desktop\myproj\secure-rfid-login\app\srl-rfid-writer\argorfid-writer\databasemanager.c(11): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(371): vedere la dichiarazione di 'sprintf'
-     1>c:\users\andrea\desktop\myproj\secure-rfid-login\app\srl-rfid-writer\argorfid-writer\databasemanager.c(41): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(371): vedere la dichiarazione di 'sprintf'
-     1>c:\users\andrea\desktop\myproj\secure-rfid-login\app\srl-rfid-writer\argorfid-writer\databasemanager.c(70): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(371): vedere la dichiarazione di 'sprintf'
-     1>c:\users\andrea\desktop\myproj\secure-rfid-login\app\srl-rfid-writer\argorfid-writer\databasemanager.c(71): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(371): vedere la dichiarazione di 'sprintf'
-     1>c:\users\andrea\desktop\myproj\secure-rfid-login\app\srl-rfid-writer\argorfid-writer\databasemanager.c(30): warning C4715: 'insert_serial': non tutti i percorsi di controllo restituiscono un valore
+         Tutti gli output sono aggiornati.
        Link:
          c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\srl-rfid-writer\Debug\srl-rfid-writer.exe" /NOLOGO libmysql.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\srl-rfid-writer.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\srl-rfid-writer\Debug\srl-rfid-writer.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Andrea\Desktop\myProj\secure-rfid-login\app\srl-rfid-writer\Debug\srl-rfid-writer.lib" /MACHINE:X86 Debug\aes.obj
          Debug\ArduinoRFID.obj
@@ -32,4 +22,4 @@
 
 Compilazione completata.
 
-Tempo trascorso 00:00:04.55
+Tempo trascorso 00:00:00.94

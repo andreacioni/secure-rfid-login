@@ -3,8 +3,10 @@
 
 #include "ArduinoRFID.h"
 #include "EncDec.h"
+#include "DatabaseManager.h"
 
 #define TIMEOUT 10 //Number of seconds to wait a message after SS flag was captured
+#define SERIAL_LENGHT 4
 
 char buff[(MAX_MESSAGE_LENGHT*4)+4];
 char name[MAX_MESSAGE_LENGHT] = {0x00},surname[MAX_MESSAGE_LENGHT] = {0x00},username[MAX_MESSAGE_LENGHT] = {0x00},password[MAX_MESSAGE_LENGHT] = {0x00};
@@ -20,6 +22,7 @@ int start_rfid_reader(NOTIFYICONDATA *notify)
 {
 	
 	unsigned char enc_username[MAX_MESSAGE_LENGHT] = {0x00},enc_password[MAX_MESSAGE_LENGHT] = {0x00};
+	unsigned char serialnumber[SERIAL_LENGHT];
 
 	port = wait_for_device();
 	nData = notify;
@@ -33,10 +36,13 @@ int start_rfid_reader(NOTIFYICONDATA *notify)
 			
 			is_data_present = FALSE;
 
-			if(wait_message(port,TIMEOUT,(unsigned char *) buff, ((MAX_MESSAGE_LENGHT*4)+4)) == 1) 			//			!!!!!Non funziona il timeout!!!!!	
+			//	!!!!!!!Non funziona il timeout!!!!!	
+			if(wait_message(port,TIMEOUT,(unsigned char *) buff, ((MAX_MESSAGE_LENGHT*4)+4)) == 1)
 			{
 				printf("[SERIAL]: ");
 				printf("message received!\n");
+
+				wait_serial_number(port,serialnumber);
 
 				//Clean the buffer to prevent error
 				memset(name,0,MAX_MESSAGE_LENGHT);
@@ -49,7 +55,14 @@ int start_rfid_reader(NOTIFYICONDATA *notify)
 				memcpy(surname,&buff[(MAX_MESSAGE_LENGHT+1)*1],MAX_MESSAGE_LENGHT);
 				memcpy(enc_username,&buff[(MAX_MESSAGE_LENGHT+1)*2],MAX_MESSAGE_LENGHT);
 				memcpy(enc_password,&buff[(MAX_MESSAGE_LENGHT+1)*3],MAX_MESSAGE_LENGHT);
-				
+
+				//Serial database checking
+				if(is_serial_present(serialnumber) != 1)
+				{
+					printf("[DATABASE] Invalid serial card number!\n");
+					return;
+				}
+
 				//Data are ready and correctly sent
 				is_data_present = TRUE;
 
@@ -59,7 +72,7 @@ int start_rfid_reader(NOTIFYICONDATA *notify)
 				//Send notification
 				sendInfoNotification();
 
-				start("START firefox http://gobettivolta.gov.it/component/banners/click/11");
+				start("START firefox https://www.portaleargo.it/argoweb/home.seam");
 			}
 			else
 			{	

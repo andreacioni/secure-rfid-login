@@ -8,6 +8,6 @@ var self = require("sdk/self");
 
 //Listen for page loading
 pageMod.PageMod({
-  include: user_login,
+  include: teacher_login,
   contentScriptFile: [self.data.url("jquery-1.7.min.js"), self.data.url("my-script.js")]
 });

@@ -8,6 +8,8 @@
 #define BAUD_RATE 					115200
 #define SETUP_WAIT 					4000 		//Milliseconds wait to allow Arduino to complete the setup phase and start loop function
 
+#define SERIAL_LENGHT 4
+
 //It return the port number of the Arduino board connected 
 int wait_for_device();
 
@@ -25,3 +27,5 @@ void write_block(int port,unsigned char * block, size_t len,unsigned char block_
 
 //Return 0 if message is corrupt or 1 if message is valid (you can take it from buff)
 int wait_message(int port, int timeout, unsigned char *buff, int buff_lenght);
+
+void wait_serial_number(int port,unsigned char * buffer);

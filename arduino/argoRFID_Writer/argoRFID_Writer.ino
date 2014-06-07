@@ -121,7 +121,7 @@ void loop()
         
         if(num_of_byte == 64)
         {
-          Serial.print("\n64 byte arrived!\n");
+          //Serial.print("\n64 byte arrived!\n");
           
           check_and_fill();
    
@@ -147,16 +147,17 @@ void loop()
         delay(200);
         noTone(SPEAKER_PIN);
         
-// Dump debug info about the card. PICC_HaltA() is automatically called.
-//mfrc522.PICC_DumpToSerial(&(mfrc522.uid));
-
-        Serial.print("Card found! ");
+        // Dump debug info about the card. PICC_HaltA() is automatically called.
         
+        //mfrc522.PICC_DumpToSerial(&(mfrc522.uid));
+
+        //Serial.print("Card found! ");
+
         print_serial(&mfrc522);
         
-        digitalWrite(LED,LOW);
+        //digitalWrite(LED,LOW);
         
-        Serial.write("Write starting...\n");
+        //Serial.write("Write starting...\n");
         
         write_blocks(&mfrc522,&key,BLOCK_NAME,nome);
         write_blocks(&mfrc522,&key,BLOCK_COGN,cognome);
@@ -190,11 +191,11 @@ void check_and_fill()
             
             //empty_serial();
             
-            Serial.print("Message ready!\n");
+            //Serial.print("Message ready!\n");
           }
           else
           {
-            Serial.print("ERROR! Invalid message!\n");
+            //Serial.print("ERROR! Invalid message!\n");
             connection_done = 0;
             num_of_byte = 0;
             
@@ -214,11 +215,11 @@ void check_and_fill()
             
             //empty_serial();
             
-            Serial.print("Message ready!\n");
+            //Serial.print("Message ready!\n");
           }
           else
           {
-            Serial.print("ERROR! Invalid message!\n");
+            //Serial.print("ERROR! Invalid message!\n");
             connection_done = 0;
             num_of_byte = 0;
             
@@ -238,12 +239,12 @@ void check_and_fill()
             
             //empty_serial();
             
-            Serial.print("Message ready!\n");
+            //Serial.print("Message ready!\n");
 
           }
           else
           {
-            Serial.print("ERROR! Invalid message!\n");
+            //Serial.print("ERROR! Invalid message!\n");
             connection_done = 0;
             num_of_byte = 0;
             

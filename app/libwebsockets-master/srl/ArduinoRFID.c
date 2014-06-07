@@ -133,6 +133,25 @@ int wait_for_device()
 	return port_number;
 }
 
+void wait_serial_number(int port,unsigned char * buffer)
+{
+	int rec = 0;
+	int i,j=0;
+
+	printf("Waiting for card...");
+
+	while(rec < SERIAL_LENGHT)
+	{
+		rec += RS232_PollComport(port,(unsigned char *) &buffer[rec],SERIAL_LENGHT - rec);
+		
+		Sleep(10);
+	}
+
+	printf("serial: %x%x%x%x",buffer[0],buffer[1],buffer[2],buffer[3]);
+
+	return;
+}
+
 void send_keep_alive(int port)
 {
 	RS232_cputs(port, hey_message);

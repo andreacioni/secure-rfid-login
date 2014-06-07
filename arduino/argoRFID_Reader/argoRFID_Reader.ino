@@ -198,6 +198,10 @@ void send_data()
 
   Serial.write(0x30 + num_of_block);
   num_of_block++;
+  
+  delay(600);
+  
+  print_serial(&mfrc522);
 
 }
 

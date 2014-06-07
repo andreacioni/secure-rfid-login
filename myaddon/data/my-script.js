@@ -44,7 +44,7 @@ if (window.WebSocket)
 
 	
 	//Apri web socketz
-  		socket = new WebSocket("wss://127.0.0.1:" + port_number + "/","dumb-increment-protocol");    
+  		socket = new WebSocket("wss://localhost:" + port_number + "/","dumb-increment-protocol");    
   		
   		socket.onopen = function () {
 			document.getElementById('secure_access').value = "Accesso sicuro";
@@ -64,9 +64,9 @@ if (window.WebSocket)
 	    	var buff = e.data;
 			//console.log("Server: " + e.data);
 			if(n_message == 0){
-				document.getElementById('utente').focus();
-				$("#utente").val(buff);
-				document.getElementById('utente').blur();
+				document.getElementById('j_username').focus();
+				$("#j_username").val(buff);
+				document.getElementById('j_username').blur();
 				n_message = 1;
 			} else {
 			document.getElementById('j_password').focus();

@@ -132,12 +132,12 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </PostBuildEvent>
     <Link>
       <AdditionalOptions> /machine:X86 /debug %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;lib\Debug\websockets_static.lib;lib\$(Configuration)\ZLIB.lib;C:\OpenSSL-Win32\lib\VC\ssleay32MDd.lib;C:\OpenSSL-Win32\lib\VC\libeay32MDd.lib;ws2_32.lib</AdditionalDependencies>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;libmysql.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;lib\Debug\websockets_static.lib;lib\$(Configuration)\ZLIB.lib;C:\OpenSSL-Win32\lib\VC\ssleay32MDd.lib;C:\OpenSSL-Win32\lib\VC\libeay32MDd.lib;ws2_32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ImportLibrary>C:/Users/Andrea/Desktop/myProj/secure-rfid-login/app/libwebsockets-master/build/lib/Debug/libwebsockets-secure-rfid-login.lib</ImportLibrary>
       <ProgramDataBaseFile>C:/Users/Andrea/Desktop/myProj/secure-rfid-login/app/libwebsockets-master/build/bin/Debug/libwebsockets-secure-rfid-login.pdb</ProgramDataBaseFile>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <Version>
       </Version>
     </Link>
@@ -198,7 +198,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </PostBuildEvent>
     <Link>
       <AdditionalOptions> /machine:X86 %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;lib\Release\websockets_static.lib;lib\$(Configuration)\ZLIB.lib;C:\OpenSSL-Win32\lib\VC\ssleay32MD.lib;C:\OpenSSL-Win32\lib\VC\libeay32MD.lib;ws2_32.lib</AdditionalDependencies>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;libmysql.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;lib\Release\websockets_static.lib;lib\$(Configuration)\ZLIB.lib;C:\OpenSSL-Win32\lib\VC\ssleay32MD.lib;C:\OpenSSL-Win32\lib\VC\libeay32MD.lib;ws2_32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <ImportLibrary>C:/Users/Andrea/Desktop/myProj/secure-rfid-login/app/libwebsockets-master/build/lib/Release/libwebsockets-secure-rfid-login.lib</ImportLibrary>
@@ -399,6 +399,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="..\srl\ArduinoRFID.h" />
     <ClInclude Include="..\srl\ArgoRFID_Reader.h" />
     <ClInclude Include="..\srl\crypt.h" />
+    <ClInclude Include="..\srl\DatabaseManager.h" />
     <ClInclude Include="..\srl\EncDec.h" />
     <ClInclude Include="..\srl\rs232.h" />
     <ClInclude Include="..\srl\secure-rfid-login.h" />
@@ -412,10 +413,11 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="..\srl\aes.c" />
     <ClCompile Include="..\srl\ArduinoRFID.c" />
     <ClCompile Include="..\srl\ArgoRFID_Reader.c" />
+    <ClCompile Include="..\srl\DatabaseManager.c" />
     <ClCompile Include="..\srl\EncDec.c" />
     <ClCompile Include="..\srl\rs232.c" />
     <ClCompile Include="..\srl\secure-rfid-login.c" />
-    <ClCompile Include="..\srl\system-register.cpp" />
+    <ClCompile Include="..\srl\system-register.c" />
     <ClCompile Include="..\srl\tray.c" />
     <ClCompile Include="..\win32port\win32helpers\getopt.c" />
     <ClCompile Include="..\win32port\win32helpers\getopt_long.c" />

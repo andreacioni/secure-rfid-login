@@ -16,18 +16,18 @@ void secure_input(char * buffer);
 int main()
 {
 	char nome[MAX_LENGHT] = {0x00},cognome[MAX_LENGHT] = {0x00},username[MAX_LENGHT] = {0x00},password[MAX_LENGHT] = {0x00};
-	unsigned char enc_username[MAX_LENGHT]  = {0};
-	unsigned char enc_psw[MAX_LENGHT]		= {0};
+	unsigned char enc_username[MAX_LENGHT]  = {0x00};
+	unsigned char enc_psw[MAX_LENGHT]		= {0x00};
+	unsigned char serial_number[SERIAL_LENGHT]	= {0x00};
 	int port;
 	int ret;
 	char select = 0x00;
 
-	unsigned char serial[] = { 0x32, 0x11, 0x11, 0xAA };
+	/*unsigned char serial[] = { 0x32, 0x11, 0x11, 0xAA };
 	
 	if(is_serial_present(serial) == 0)
-		insert_serial(serial);
+		insert_serial(serial);*/
 
-	return 0;
 	
 	printf("Inserisci il tuo nome: ");
 	ret = scanf_s(MAX_LENGHT_S,&nome,MAX_LENGHT);		//Only 63 characters!
@@ -102,7 +102,25 @@ int main()
 	write_block(port,(unsigned char *) enc_username,MAX_LENGHT,0x32);
 	write_block(port,(unsigned char *) enc_psw,MAX_LENGHT,0x33);
 
-	printf("\nData sent to the writing device, to write them leave your RFID tag on the top of the device while he emits beep...\n\n");
+	wait_serial_number(port,serial_number);
+
+	ret = is_serial_present(serial_number);
+
+	if(ret == 1)
+	{
+		printf("\nThis serial number alredy exist! Nothing changed...\n");
+		return;
+	}
+	else if(ret == 0)
+	{
+		printf("\nSerial number saved on database!\n\n");
+		insert_serial(serial_number);
+		return;
+	}
+	else
+	{
+		printf("\nERROR! Something went wrong...the card IS NOT ALLOWED, try again or contact the administrator\n");
+	}
 
 	system("pause");
 
