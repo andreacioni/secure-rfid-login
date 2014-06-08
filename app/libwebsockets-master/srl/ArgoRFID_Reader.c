@@ -58,21 +58,21 @@ int start_rfid_reader(NOTIFYICONDATA *notify)
 
 				//Serial database checking
 				if(is_serial_present(serialnumber) != 1)
-				{
 					printf("[DATABASE] Invalid serial card number!\n");
-					return;
+				else
+				{
+					//Data are ready and correctly sent
+					is_data_present = TRUE;
+
+					//Decrypt data
+					decrypt_data(enc_username,enc_password,username,password);
+
+					//Send notification
+					sendInfoNotification();
+	
+					start("START firefox https://www.portaleargo.it/argoweb/home.seam");
 				}
-
-				//Data are ready and correctly sent
-				is_data_present = TRUE;
-
-				//Decrypt data
-				decrypt_data(enc_username,enc_password,username,password);
-
-				//Send notification
-				sendInfoNotification();
-
-				start("START firefox https://www.portaleargo.it/argoweb/home.seam");
+				
 			}
 			else
 			{	

@@ -401,6 +401,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="..\srl\crypt.h" />
     <ClInclude Include="..\srl\DatabaseManager.h" />
     <ClInclude Include="..\srl\EncDec.h" />
+    <ClInclude Include="..\srl\resource.h" />
     <ClInclude Include="..\srl\rs232.h" />
     <ClInclude Include="..\srl\secure-rfid-login.h" />
     <ClInclude Include="..\srl\system-register.h" />
@@ -433,6 +434,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\srl\icon.ico" />
+    <None Include="..\srl\icon.png" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\srl\resources.rc" />
